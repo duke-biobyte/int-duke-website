@@ -12,6 +12,13 @@ $palette: (
 		2: #25282C,
 		3: #33363A
 	),
+	// -- The ones I tried to custom-define, but to no avail
+	// primary: (
+	// 	1: #1a4568,
+	// 	2: #9dcedf,
+	// 	3: #435d74,
+	// 	4: #E9E9FF
+ 	// ),
 	primary: (
 		1: #6163FF,
 		2: #ACADFF,
@@ -28,13 +35,16 @@ $palette: (
 		error: #FF6171,
 		warning: #FFA173,
 		success: #24E5AF
+	),
+	background:(
+		1: #ffffff
 	)
 );
 
 // Base typography: color
 $color: (
-	heading:				get-color(light, 1),
-	base: 					get-color(light, 2),
+	heading:				get-color(dark, 3),
+	base: 					get-color(dark, 2),
 	high-contrast: 			get-color(light, 1),
 	mid-contrast: 			get-color(light, 2),
 	low-contrast: 			get-color(light, 3),
@@ -75,7 +85,7 @@ $icon--color: (
 
 // Misc elements: background color
 $bg--color: (
-	body: 			get-color(dark, 1),
+	body: 			get-color(background, 1),
 	body-shadow:	0 20px 48px rgba(get-color(dark, 1), .8),	// body shadow when a boxed layout is used (set to null if don't want a shadow)
 	body-outer:		lighten(get-color(dark, 1), 2%),			// outer bg color when a boxed layout is used
 	bg-color: 		lighten(get-color(light, 1), 9%),			// .has-bg-color helper class

@@ -111,17 +111,17 @@ const Header = ({
                       'list-reset text-xs',
                       navPosition && `header-nav-${navPosition}`
                     )}>
-                    <li>
+                    {/* <li>
                       <Link to="#0" onClick={closeMenu}>Documentation</Link>
-                    </li>
+                    </li> */}
                   </ul>
                   {!hideSignin &&
                     <ul
                       className="list-reset header-nav-right"
                     >
-                      <li>
+                      {/* <li>
                         <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
-                      </li>
+                      </li> */}
                     </ul>}
                 </div>
               </nav>
