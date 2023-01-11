@@ -51,7 +51,7 @@ const Difference = ({
 
   const sectionHeader = {
     title: 'You can make a difference.',
-    paragraph: 'Our project-based organization means even you can make a difference in our club.'
+    paragraph: 'Our project-based organization means that you can make a difference in our club.'
   };
 
   return (

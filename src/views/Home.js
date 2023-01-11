@@ -16,8 +16,8 @@ const Home = () => {
       <FeaturesTiles />
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
       <Difference invertMobile topDivider imageFill className="illustration-section-03" />
+      <Testimonial topDivider />
       <People invertMobile topDivider imageFill className="illustration-section-03" />
-      {/* <Testimonial topDivider /> */}
       <Cta split />
     </>
   );
