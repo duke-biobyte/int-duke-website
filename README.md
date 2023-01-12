@@ -1,3 +1,14 @@
+# InT@Duke Website:
+
+<!-- Usage:
+1. [InT@Duke Website:](#intduke-website)
+         1. [`npm install`](#npm-install)
+         2. [`npm start`](#npm-start)
+         3. [`npm test`](#npm-test)
+         4. [`npm run build`](#npm-run-build)
+         5. [`npm run eject`](#npm-run-eject) -->
+
+<!-- 
 # Free React landing page template
 
 ![Open React template preview](https://user-images.githubusercontent.com/2683512/78789364-545e7100-79ad-11ea-9e3c-9528c99cda8e.png)
@@ -24,30 +35,25 @@ If you need the design files, you can download them from Figma's Community 👉 
 
 ## Table of contents
 
-* [Usage](#usage)
-  * [Available Scripts](#available-scripts)
-    * [npm start](#npm-start)
-    * [npm test](#npm-test)
-    * [npm run build](#npm-run-build)
-    * [npm run eject](#npm-run-eject)
-  * [Learn More](#learn-more)
-    * [Code Splitting](#code-splitting)
-    * [Analyzing the Bundle Size](#analyzing-the-bundle-size)
-    * [Making a Progressive Web App](#making-a-progressive-web-app)
-    * [Advanced Configuration](#advanced-configuration)
-    * [Deployment](#deployment)
-    * [npm run build fails to minify](#npm-run-build-fails-to-minify)
-  * [Google Analytics Setup](#google-analytics-setup)
-* [Credits](#credits)
-* [Terms and License](#terms-and-license)
-* [About Us](#about-us)
-* [Stay in the loop](#stay-in-the-loop)
+1. [InT@Duke Website:](#intduke-website)
+2. [Free React landing page template](#free-react-landing-page-template)
+   1. [Live demo](#live-demo)
+   2. [Open PRO](#open-pro)
+   3. [Design files](#design-files)
+   4. [Table of contents](#table-of-contents)
+   5. [Usage](#usage)
+      1. [Available Scripts](#available-scripts)
+         1. [`npm install`](#npm-install)
+         2. [`npm start`](#npm-start)
+         3. [`npm test`](#npm-test)
+         4. [`npm run build`](#npm-run-build)
+         5. [`npm run eject`](#npm-run-eject)
 
 ## Usage
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Available Scripts
+### Available Scripts -->
 
 In the project directory, you can run:
 
@@ -86,7 +92,7 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
+<!--
 ### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -141,4 +147,4 @@ We're an Italian developer/designer duo creating high-quality design/code resour
 
 ## Stay in the loop
 
-If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).
+If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe). -->
