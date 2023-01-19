@@ -6,6 +6,7 @@ import FeaturesSplit from '../components/sections/FeaturesSplit';
 import Testimonial from '../components/sections/Testimonial';
 import Difference from '../components/sections/Difference';
 import People from '../components/sections/People';
+import PeopleTiles from '../components/sections/PeopleTiles';
 import Cta from '../components/sections/Cta';
 
 const Home = () => {
@@ -17,7 +18,8 @@ const Home = () => {
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
       <Difference invertMobile topDivider imageFill className="illustration-section-03" />
       <Testimonial topDivider />
-      <People invertMobile topDivider imageFill className="illustration-section-03" />
+      {/* <People invertMobile topDivider imageFill className="illustration-section-03" /> */}
+      <PeopleTiles/>
       <Cta split />
     </>
   );
