@@ -83,6 +83,14 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+#### `npm run testDeploy`
+
+Deploys the app to Vercel to a preview with the command `vercel`.
+
+#### `npm run deploy`
+
+Deploys the app to Vercel into production with the command `vercel --prod`.
+
 #### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**

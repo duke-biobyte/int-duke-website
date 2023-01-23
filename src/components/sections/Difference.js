@@ -51,7 +51,7 @@ const Difference = ({
 
   const sectionHeader = {
     title: 'You can make a difference.',
-    paragraph: 'Our project-based organization means that you can make a difference in our club.'
+    paragraph: 'Our project-based organization means that you can make a difference in our club. While we are not accepting new project lead applications this semester (spring 2023), being an active member earns you the opportunity to propose and lead your own project next semester.'
   };
 
   return (
@@ -62,6 +62,7 @@ const Difference = ({
       <div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
+
           <div className={splitClasses}>
 
             <div className="split-item">
@@ -89,6 +90,16 @@ const Difference = ({
                   width={528}
                   height={396} />
               </div>
+            </div>
+          </div>
+
+          <div className={splitClasses}>
+            <div className="split-item center-content">
+                <Image
+                  src={require('./../../assets/images/final-event.png')}
+                  alt="The Big Final Event"
+                  width={528}
+                  height={396} />
             </div>
           </div>
         </div>
