@@ -62,7 +62,7 @@ const Hero = ({
           <div className="hero-content">
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                This is the official website of
+                The official website of
                 </p>
             </div>
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
@@ -80,8 +80,8 @@ const Hero = ({
                   <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
                     View on Github
                     </Button> */}
-                  <Button tag="a" color="primary" wideMobile href="https://dukegroups.com/feeds?type=club&type_id=70129">
-                    Sign up on DukeGroups
+                  <Button tag="a" color="primary" wideMobile href="https://forms.gle/DqpPWCMc7t8Dbm7V6">
+                    Apply Here
                     </Button>
                 </ButtonGroup>
               </div>

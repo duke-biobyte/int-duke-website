@@ -51,7 +51,7 @@ const Difference = ({
 
   const sectionHeader = {
     title: 'You can make a difference.',
-    paragraph: 'Our project-based organization means that you can make a difference in our club. While we are not accepting new project lead applications this semester (spring 2023), being an active member earns you the opportunity to propose and lead your own project next semester.'
+    paragraph: 'Our project-based organization means that you can make a difference in our club. Being an active member earns you the opportunity to propose and lead your own project next semester.'
   };
 
   return (

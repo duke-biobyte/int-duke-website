@@ -55,7 +55,7 @@ const Cta = ({
         >
           <div className="cta-slogan">
             <h3 className="m-0 text-color-high">
-              Excited? Sign up on DukeGroups
+              Excited? Applying using our Google Form.
               </h3>
           </div>
           <div className="cta-action">
@@ -66,8 +66,8 @@ const Cta = ({
                   <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
                     View on Github
                     </Button> */}
-                  <Button tag="a" color="light" wideMobile href="https://dukegroups.com/feeds?type=club&type_id=70129">
-                    Sign up on DukeGroups
+                  <Button tag="a" color="light" wideMobile href="https://forms.gle/DqpPWCMc7t8Dbm7V6">
+                    Application Form
                     </Button>
                 </ButtonGroup>
           </div>

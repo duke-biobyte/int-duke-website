@@ -127,7 +127,7 @@ const PeopleTiles = ({
                     Holly Zhuang
                     </h4>
                   <p className="m-0 text-sm">
-                    Co-President
+                    Co-President, Project 4 Lead
                     </p>
                 </div>
               </div>
@@ -212,7 +212,7 @@ const PeopleTiles = ({
 
           <div className={tilesClasses}>
 
-            <div className="tiles-item reveal-from-bottom">
+            {/* <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
@@ -232,7 +232,7 @@ const PeopleTiles = ({
                     </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
@@ -257,7 +257,7 @@ const PeopleTiles = ({
               </div>
             </div>
 
-            <div className="tiles-item reveal-from-bottom">
+            {/* <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
@@ -270,7 +270,6 @@ const PeopleTiles = ({
                 </div>
                 <div className="features-tiles-item-content">
                   <h4 className="mt-0 mb-8">
-                    {/* TODO */}
                     Caroline Palmer
                     </h4>
                   <p className="m-0 text-sm">
@@ -278,11 +277,7 @@ const PeopleTiles = ({
                     </p>
                 </div>
               </div>
-            </div>
-          </div>
-
-
-          <div className={tilesClasses}>
+            </div> */}
 
             <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
@@ -305,8 +300,13 @@ const PeopleTiles = ({
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="tiles-item reveal-from-bottom">
+
+          <div className={tilesClasses}>
+
+
+            {/* <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
@@ -319,7 +319,6 @@ const PeopleTiles = ({
                 </div>
                 <div className="features-tiles-item-content">
                   <h4 className="mt-0 mb-8">
-                    {/* TODO */}
                     Sahil Choudhri
                     </h4>
                   <p className="m-0 text-sm">
@@ -327,7 +326,7 @@ const PeopleTiles = ({
                     </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
@@ -351,9 +350,60 @@ const PeopleTiles = ({
                 </div>
               </div>
             </div>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/aadesh.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Aadesh Anchaliya
+                    </h4>
+                  <p className="m-0 text-sm">
+                    Project 5 Lead
+                    </p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
+
+          <SectionSubheader data={{title: 'Special Thanks'}} className="center-content" />
+
           <div className={tilesClasses}>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/leo.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Tian-Lai (Leo) Zang
+                    </h4>
+                  <p className="m-0 text-sm">
+                    DKU Ambassador
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className={tilesClasses}>
+
             <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
                 <div className="features-tiles-item-header">
@@ -389,7 +439,6 @@ const PeopleTiles = ({
                 </div>
                 <div className="features-tiles-item-content">
                   <h4 className="mt-0 mb-8">
-                    {/* TODO */}
                     Miran Bhima
                     </h4>
                   <p className="m-0 text-sm">
@@ -420,37 +469,10 @@ const PeopleTiles = ({
                 </div>
               </div>
             </div>
-          </div>
-
-
-          <SectionSubheader data={{title: 'Special Thanks'}} className="center-content" />
-
-          <div className={tilesClasses}>
-
-            <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/people/cropped/leo.png')}
-                      alt="Features tile icon 01"
-                      width={128}
-                      height={128} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Tian-Lai (Leo) Zang
-                    </h4>
-                  <p className="m-0 text-sm">
-                    DKU Ambassador
-                    </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> */}
 
         </div>
+
       </div>
     </section>
   );
