@@ -8,11 +8,23 @@ import Difference from '../components/sections/Difference';
 import People from '../components/sections/People';
 import PeopleTiles from '../components/sections/PeopleTiles';
 import Cta from '../components/sections/Cta';
+import SEO from 'react-seo-component'
 
 const Home = () => {
 
   return (
     <>
+      <SEO
+        title="Home"
+        titleTemplate="InTranscription@Duke"
+        titleSeparator=' - '
+        description='InTranscription@Duke is the premier biotechnology club for undergraduate students at Duke. We host biotech-related projects and regularly invite industry leaders for talks.'
+        image='../assets/images/logo.svg'
+        pathname='intduke.com'
+        siteLanguage='en'
+        siteLocale='en_US'
+        author='Jaden Long'
+      />
       <Hero className="illustration-section-01" />
       <FeaturesTiles />
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
