@@ -45,7 +45,7 @@ const PeopleTiles = ({
   );
 
   const sectionHeader = {
-    title: 'Leadership',
+    title: 'People',
     paragraph: ''
   };
 
@@ -127,7 +127,7 @@ const PeopleTiles = ({
                     Holly Zhuang
                     </h4>
                   <p className="m-0 text-sm">
-                    Co-President, Project 4 Lead
+                    Co-President, Project 3 Lead
                     </p>
                 </div>
               </div>
@@ -136,7 +136,7 @@ const PeopleTiles = ({
           </div>
 
 
-          <SectionSubheader data={{title: 'Project Leads'}} className="center-content" />
+          <SectionSubheader data={{title: 'Project Leads and Members'}} className="center-content" />
 
           <div className={tilesClasses}>
 
@@ -190,100 +190,6 @@ const PeopleTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require('./../../assets/images/feature-tile-icon-01.svg')}
-                      alt="Features tile icon 01"
-                      width={128}
-                      height={128} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    {/* TODO */}
-                    Jeffery Tan
-                    </h4>
-                  <p className="m-0 text-sm">
-                    Project 1 Lead
-                    </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div className={tilesClasses}>
-
-            {/* <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/feature-tile-icon-01.svg')}
-                      alt="Features tile icon 01"
-                      width={128}
-                      height={128} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Katie Lam
-                    </h4>
-                  <p className="m-0 text-sm">
-                    Project 1 Lead
-                    </p>
-                </div>
-              </div>
-            </div> */}
-
-            <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/people/cropped/annie.png')}
-                      alt="Features tile icon 01"
-                      width={128}
-                      height={128} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    {/* TODO */}
-                    Annie Qin
-                    </h4>
-                  <p className="m-0 text-sm">
-                    Project 2 Lead
-                    </p>
-                </div>
-              </div>
-            </div>
-
-            {/* <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
-                      src={require('./../../assets/images/people/cropped/caroline.png')}
-                      alt="Features tile icon 01"
-                      width={128}
-                      height={128} />
-                  </div>
-                </div>
-                <div className="features-tiles-item-content">
-                  <h4 className="mt-0 mb-8">
-                    Caroline Palmer
-                    </h4>
-                  <p className="m-0 text-sm">
-                    Project 2 Lead
-                    </p>
-                </div>
-              </div>
-            </div> */}
-
-            <div className="tiles-item reveal-from-bottom">
-              <div className="tiles-item-inner">
-                <div className="features-tiles-item-header">
-                  <div className="features-tiles-item-image mb-16">
-                    <Image
                       src={require('./../../assets/images/people/cropped/james.png')}
                       alt="Features tile icon 01"
                       width={128}
@@ -300,18 +206,19 @@ const PeopleTiles = ({
                 </div>
               </div>
             </div>
+
+
           </div>
 
 
           <div className={tilesClasses}>
 
-
-            {/* <div className="tiles-item reveal-from-bottom">
+            <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require('./../../assets/images/feature-tile-icon-01.svg')}
+                      src={require('./../../assets/images/people/cropped/jeffery.png')}
                       alt="Features tile icon 01"
                       width={128}
                       height={128} />
@@ -319,14 +226,15 @@ const PeopleTiles = ({
                 </div>
                 <div className="features-tiles-item-content">
                   <h4 className="mt-0 mb-8">
-                    Sahil Choudhri
+                    {/* TODO */}
+                    Jeffery Tan
                     </h4>
                   <p className="m-0 text-sm">
-                    Project 3 Lead
+                    Publicity Officer, Project 2 Member
                     </p>
                 </div>
               </div>
-            </div> */}
+            </div>
 
             <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
@@ -345,7 +253,7 @@ const PeopleTiles = ({
                     William Yan
                     </h4>
                   <p className="m-0 text-sm">
-                    Project 3 Lead
+                    Project 2 Lead
                     </p>
                 </div>
               </div>
@@ -356,7 +264,7 @@ const PeopleTiles = ({
                 <div className="features-tiles-item-header">
                   <div className="features-tiles-item-image mb-16">
                     <Image
-                      src={require('./../../assets/images/people/cropped/aadesh.png')}
+                      src={require('./../../assets/images/people/cropped/annie.png')}
                       alt="Features tile icon 01"
                       width={128}
                       height={128} />
@@ -364,10 +272,11 @@ const PeopleTiles = ({
                 </div>
                 <div className="features-tiles-item-content">
                   <h4 className="mt-0 mb-8">
-                    Aadesh Anchaliya
+                    {/* TODO */}
+                    Annie Qin
                     </h4>
                   <p className="m-0 text-sm">
-                    Project 5 Lead
+                    Project 3 Lead
                     </p>
                 </div>
               </div>
@@ -376,9 +285,127 @@ const PeopleTiles = ({
           </div>
 
 
+          <div className={tilesClasses}>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/sid.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Sid Ghanta
+                    </h4>
+                  <p className="m-0 text-sm">
+                    Project 2 Member
+                    </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/matthew.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Matthew Ahlers
+                    </h4>
+                  <p className="m-0 text-sm">
+                    Project 3 Member
+                    </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/mike.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Mike Bennett
+                    </h4>
+                  <p className="m-0 text-sm">
+                    Project 2 Member
+                    </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div className={tilesClasses}>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/abby.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Abby Zaroff
+                    </h4>
+                  <p className="m-0 text-sm">
+                    Project 2 Member
+                    </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
           <SectionSubheader data={{title: 'Special Thanks'}} className="center-content" />
 
           <div className={tilesClasses}>
+
+            <div className="tiles-item reveal-from-bottom">
+              <div className="tiles-item-inner">
+                <div className="features-tiles-item-header">
+                  <div className="features-tiles-item-image mb-16">
+                    <Image
+                      src={require('./../../assets/images/people/cropped/longenecker.png')}
+                      alt="Features tile icon 01"
+                      width={128}
+                      height={128} />
+                  </div>
+                </div>
+                <div className="features-tiles-item-content">
+                  <h4 className="mt-0 mb-8">
+                    Andrew Longenecker
+                    </h4>
+                  <p className="m-0 text-sm">
+                    SVP of Business Development at Probably Genetic
+                    </p>
+                </div>
+              </div>
+            </div>
 
             <div className="tiles-item reveal-from-bottom">
               <div className="tiles-item-inner">
@@ -401,7 +428,9 @@ const PeopleTiles = ({
                 </div>
               </div>
             </div>
+
           </div>
+
           {/* <div className={tilesClasses}>
 
             <div className="tiles-item reveal-from-bottom">
