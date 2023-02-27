@@ -1,0 +1,145 @@
+import React from 'react';
+import classNames from 'classnames';
+import { SectionSplitProps } from '../../utils/SectionProps';
+import SectionHeader from './partials/SectionHeader';
+import SectionSubHeader from './partials/SectionSubheader'
+import Image from '../elements/Image';
+
+const propTypes = {
+  ...SectionSplitProps.types
+}
+
+const defaultProps = {
+  ...SectionSplitProps.defaults
+}
+
+const Showcase = ({
+  className,
+  topOuterDivider,
+  bottomOuterDivider,
+  topDivider,
+  bottomDivider,
+  hasBgColor,
+  invertColor,
+  invertMobile,
+  invertDesktop,
+  alignTop,
+  imageFill,
+  ...props
+}) => {
+
+  const outerClasses = classNames(
+    'features-split section',
+    topOuterDivider && 'has-top-divider',
+    bottomOuterDivider && 'has-bottom-divider',
+    hasBgColor && 'has-bg-color',
+    invertColor && 'invert-color',
+    className
+  );
+
+  const innerClasses = classNames(
+    'features-split-inner section-inner',
+    topDivider && 'has-top-divider',
+    bottomDivider && 'has-bottom-divider'
+  );
+
+  const splitClasses = classNames(
+    'split-wrap',
+    invertMobile && 'invert-mobile',
+    invertDesktop && 'invert-desktop',
+    alignTop && 'align-top'
+  );
+
+  const sectionHeader = {
+    title: 'Public Event Showcase',
+    paragraph: 'These are all events that we have hosted or plan to host.'
+  };
+
+  const pastEventsSubheader = {
+    title: 'Past Public Events',
+    paragraph: ''
+  }
+
+  const futureEventsSubheader = {
+    title: 'Future Public Events',
+    paragraph: ''
+  }
+
+  // Eoin event
+  // MBA event
+  // Boba social
+  // Ben Lodgson
+  // Biotech Podcast
+  // Journal Club
+
+  return (
+    <section
+      {...props}
+      className={outerClasses}
+    >
+      <div className="container">
+        <div className={innerClasses}>
+          <SectionHeader data={sectionHeader} className="center-content" />
+
+          <SectionSubHeader data={pastEventsSubheader} className="center-content" />
+
+          <div className={splitClasses}>
+
+            <div className="split-item">
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                <Image
+                  src={require('./../../assets/images/events/eoin.png')}
+                  alt="Speaker Event with Eoin McDonnell"
+                  width={528}
+                  height={396} />
+              </div>
+
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                <Image
+                  src={require('./../../assets/images/events/mba.png')}
+                  alt="Graduate Student Panel"
+                  width={528}
+                  height={396} />
+              </div>
+            </div>
+            <div className="split-item center-content">
+                <Image
+                  src={require('./../../assets/images/events/boba.png')}
+                  alt="Boba Social"
+                  width={528}
+                  height={396} />
+            </div>
+          </div>
+
+          <SectionSubHeader data={futureEventsSubheader} className="center-content" />
+
+          <div className={splitClasses}>
+            <div className="split-item center-content">
+                <Image
+                  src={require('./../../assets/images/events/ben.png')}
+                  alt="Boba Social"
+                  width={528}
+                  height={396} />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Showcase.propTypes = propTypes;
+Showcase.defaultProps = defaultProps;
+
+export default Showcase;

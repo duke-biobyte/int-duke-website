@@ -31,7 +31,7 @@ const HeadshotTiles = ({
             <div className="features-tiles-item-image mb-16">
               <Image
                 src={people[i].photo}
-                alt="Features tile icon 01"
+                alt={people[i].name}
                 width={128}
                 height={128} />
             </div>

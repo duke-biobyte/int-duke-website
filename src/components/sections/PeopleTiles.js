@@ -75,7 +75,7 @@ const PeopleTiles = ({
       title: 'Project 1 Lead',
       photo: require('../../assets/images/people/cropped/daniel.png') },
 
-    { name: 'James',
+    { name: 'James Yang',
       title: 'Project 2 Lead',
       photo: require('../../assets/images/people/cropped/james.png') },
 

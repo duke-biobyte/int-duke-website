@@ -5,6 +5,7 @@ import FeaturesTiles from '../components/sections/FeaturesTiles';
 import FeaturesSplit from '../components/sections/FeaturesSplit';
 import Testimonial from '../components/sections/Testimonial';
 import Difference from '../components/sections/Difference';
+import Showcase from '../components/sections/Showcase';
 import People from '../components/sections/People';
 import PeopleTiles from '../components/sections/PeopleTiles';
 import Cta from '../components/sections/Cta';
@@ -29,6 +30,7 @@ const Home = () => {
       <FeaturesTiles />
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
       <Difference invertMobile topDivider imageFill className="illustration-section-03" />
+      <Showcase invertMobile topDivider imageFill className="illustration-section-03" />
       <Testimonial topDivider />
       {/* <People invertMobile topDivider imageFill className="illustration-section-03" /> */}
       <PeopleTiles/>
