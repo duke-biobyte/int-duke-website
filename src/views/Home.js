@@ -3,10 +3,9 @@ import React from 'react';
 import Hero from '../components/sections/Hero';
 import FeaturesTiles from '../components/sections/FeaturesTiles';
 import FeaturesSplit from '../components/sections/FeaturesSplit';
-import Testimonial from '../components/sections/Testimonial';
+import CurrentProjects from '../components/sections/CurrentProjects';
 import Difference from '../components/sections/Difference';
 import Showcase from '../components/sections/Showcase';
-import People from '../components/sections/People';
 import PeopleTiles from '../components/sections/PeopleTiles';
 import Cta from '../components/sections/Cta';
 import SEO from 'react-seo-component'
@@ -31,7 +30,7 @@ const Home = () => {
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
       <Difference invertMobile topDivider imageFill className="illustration-section-03" />
       <Showcase invertMobile topDivider imageFill className="illustration-section-03" />
-      <Testimonial topDivider />
+      <CurrentProjects topDivider />
       {/* <People invertMobile topDivider imageFill className="illustration-section-03" /> */}
       <PeopleTiles/>
       <Cta split />

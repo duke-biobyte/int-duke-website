@@ -94,7 +94,7 @@ const Showcase = ({
                 data-reveal-container=".split-item">
                 <Image
                   src={require('./../../assets/images/events/eoin.png')}
-                  alt="Speaker Event with Eoin McDonnell"
+                  alt="Speaker Event with Eoin McDonnell, CEO of Tavros Therapeutics"
                   width={528}
                   height={396} />
               </div>
@@ -107,7 +107,7 @@ const Showcase = ({
                 data-reveal-container=".split-item">
                 <Image
                   src={require('./../../assets/images/events/mba.png')}
-                  alt="Graduate Student Panel"
+                  alt="Graduate Student Panel: A fireside chat with Aoying Zhang and Leyao Shen"
                   width={528}
                   height={396} />
               </div>
@@ -127,7 +127,7 @@ const Showcase = ({
             <div className="split-item center-content">
                 <Image
                   src={require('./../../assets/images/events/ben.png')}
-                  alt="Boba Social"
+                  alt="Speaker Event with Ben Logsdon, VP of Computational Biology at Cajal Neuroscience"
                   width={528}
                   height={396} />
             </div>
