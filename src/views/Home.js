@@ -9,6 +9,7 @@ import Showcase from '../components/sections/Showcase';
 import PeopleTiles from '../components/sections/PeopleTiles';
 import Cta from '../components/sections/Cta';
 import SEO from 'react-seo-component'
+import CalendarSection from '../components/sections/CalendarSection';
 
 const Home = () => {
 
@@ -26,13 +27,12 @@ const Home = () => {
         author='Jaden Long'
       />
       <Hero className="illustration-section-01" />
-      <FeaturesTiles />
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
       <Difference invertMobile topDivider imageFill className="illustration-section-03" />
       <Showcase invertMobile topDivider imageFill className="illustration-section-03" />
       <CurrentProjects topDivider />
-      {/* <People invertMobile topDivider imageFill className="illustration-section-03" /> */}
       <PeopleTiles/>
+      <CalendarSection />
       <Cta split />
     </>
   );

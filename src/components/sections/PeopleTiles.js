@@ -144,6 +144,7 @@ const PeopleTiles = ({
 
         </div>
 
+        <hr></hr>
       </div>
     </section>
   );
