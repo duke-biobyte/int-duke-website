@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64.698868mm"
+   height="60.701088mm"
+   viewBox="0 0 64.698868 60.701088"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="/home/longyuxi/bitmap.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   sodipodi:docname="logo-with-name.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0494603"
+     inkscape:cx="373.04889"
+     inkscape:cy="474.05319"
+     inkscape:window-width="1792"
+     inkscape:window-height="1067"
+     inkscape:window-x="0"
+     inkscape:window-y="848"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient971">
+      <stop
+         style="stop-color:#56d4d2;stop-opacity:1;"
+         offset="0"
+         id="stop967" />
+      <stop
+         style="stop-color:#9d4cff;stop-opacity:0.79262674;"
+         offset="1"
+         id="stop969" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient971"
+       id="linearGradient973"
+       x1="63.334118"
+       y1="36.346523"
+       x2="73.773293"
+       y2="36.346523"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(5.0730947,0,0,5.0730947,-242.51366,-60.869716)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient971"
+       id="linearGradient49913"
+       x1="73.067116"
+       y1="152.58463"
+       x2="125.11818"
+       y2="152.58463"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-1.0583333)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient971"
+       id="linearGradient49921"
+       x1="86.640785"
+       y1="160.99879"
+       x2="111.54451"
+       y2="160.99879"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,-1.0583333)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-72.916399,-102.68879)">
+    <path
+       id="rect254-3"
+       style="fill:url(#linearGradient973);fill-opacity:1;stroke-width:0.943685"
+       d="m 128.90595,102.68892 c -0.21865,0.004 -0.44085,0.0715 -0.6344,0.20699 l -21.94013,15.36518 c -0.15016,0.10502 -0.26735,0.23793 -0.34852,0.38809 H 79.939963 c -0.630079,0 -1.137795,0.50767 -1.137795,1.13774 0,0.63013 0.507716,1.1378 1.137795,1.1378 h 26.824147 l 23.19065,16.24075 c 0.51613,0.3612 1.22206,0.23539 1.58347,-0.28054 0.3612,-0.51613 0.23843,-1.22201 -0.27801,-1.58342 l -22.65321,-15.86067 20.97011,-14.68093 c 0.51613,-0.3612 0.63931,-1.06727 0.278,-1.58341 -0.22575,-0.32265 -0.58427,-0.49412 -0.94903,-0.48753 z m -48.981866,24.90779 c -0.630079,0 -1.137794,0.50765 -1.137794,1.13774 0,0.63008 0.507715,1.13778 1.137794,1.13778 h 24.349386 l 20.38025,14.27194 c 0.51615,0.36121 1.22206,0.2354 1.58347,-0.28054 0.36121,-0.51614 0.23844,-1.222 -0.27801,-1.58341 l -20.41962,-14.29816 c -0.208,-0.2354 -0.51162,-0.38556 -0.85203,-0.38556 z"
+       inkscape:export-filename="logo.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g881">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:Calibri;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient49913);fill-opacity:1;stroke:none;stroke-width:0.231042"
+         x="72.326424"
+         y="153.59982"
+         id="text13143"><tspan
+           sodipodi:role="line"
+           id="tspan13141"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Calibri;-inkscape-font-specification:Calibri;fill:url(#linearGradient49913);fill-opacity:1;stroke-width:0.231042"
+           x="72.326424"
+           y="153.59982">InTranscription</tspan><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Calibri;-inkscape-font-specification:Calibri;fill:url(#linearGradient49913);fill-opacity:1;stroke-width:0.231042"
+           x="72.326424"
+           y="164.62413"
+           id="tspan13145" /></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:8.81944px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient49921);fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="85.908707"
+         y="162.41664"
+         id="text22363"><tspan
+           sodipodi:role="line"
+           id="tspan22361"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:Calibri;-inkscape-font-specification:Calibri;fill:url(#linearGradient49921);fill-opacity:1;stroke-width:0.264583"
+           x="85.908707"
+           y="162.41664">@Duke</tspan></text>
+    </g>
+  </g>
+</svg>

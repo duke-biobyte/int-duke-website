@@ -111,27 +111,48 @@ const Showcase = ({
                   width={528}
                   height={396} />
               </div>
+
             </div>
-            <div className="split-item center-content">
-                <Image
-                  src={require('./../../assets/images/events/boba.png')}
-                  alt="Boba Social"
-                  width={528}
-                  height={396} />
-            </div>
+
           </div>
 
-          <SectionSubHeader data={futureEventsSubheader} className="center-content" />
 
           <div className={splitClasses}>
-            <div className="split-item center-content">
+
+            <div className="split-item">
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
                 <Image
-                  src={require('./../../assets/images/events/ben.png')}
-                  alt="Speaker Event with Ben Logsdon, VP of Computational Biology at Cajal Neuroscience"
+                  src={require('./../../assets/images/events/boba.png')}
+                  alt="Boba social"
                   width={528}
                   height={396} />
+              </div>
+
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                <Image
+                  src={require('./../../assets/images/events/ben.png')}
+                  alt="Speaker event with Ben Logsdon, VP of Computational Biology at Cajal Neuroscience"
+                  width={528}
+                  height={396} />
+              </div>
+
             </div>
           </div>
+
+          {/* <SectionSubHeader data={futureEventsSubheader} className="center-content" /> */}
+
+          {/* <div className={splitClasses}>
+          </div> */}
 
         </div>
       </div>

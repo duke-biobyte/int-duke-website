@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Logo from './partials/Logo';
 import FooterNav from './partials/FooterNav';
 import FooterSocial from './partials/FooterSocial';
+import Image from '../elements/Image';
 
 const propTypes = {
   topOuterDivider: PropTypes.bool,
@@ -41,8 +42,9 @@ const Footer = ({
           )}>
           <div className="footer-top space-between text-xxs">
             <Logo />
-            {/* <FooterSocial /> */}
+            <FooterSocial />
           </div>
+
           <div className="footer-bottom space-between text-xxs text-color-low invert-order-desktop">
             {/* <FooterNav /> */}
             {/* <div className="footer-copyright">Made by Jaden Long. All right reserved</div> */}
@@ -51,6 +53,22 @@ const Footer = ({
               <p> See source code on <a href='https://github.com/longyuxi/int-duke-website'>GitHub</a>.</p>
             </div>
           </div>
+
+          <div className="footer-bottom space-between text-xxs text-color-low invert-order-desktop">
+            <div className="footer-copyright">
+              <p>We are part of the nation-wide biotechnology club <a href='https://www.in-transcription.org'>In Transcription</a></p>
+              <p>
+                <a href='https://www.in-transcription.org'>
+                  <Image
+                    src={require('../../assets/images/intmain-logo.jpeg')}
+                    alt="Logo of In Transcription"
+                    width={64}
+                    height={64} />
+                </a>
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </footer>
