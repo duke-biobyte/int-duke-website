@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Logo from './partials/Logo';
+import Image from '../elements/Image';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -86,6 +87,16 @@ const Header = ({
             bottomDivider && 'has-bottom-divider'
           )}>
           <Logo />
+
+          A chapter of
+
+          <a href='https://www.in-transcription.org'>
+            <Image
+              src={require('../../assets/images/intmain-logo.jpeg')}
+              alt="Logo of In Transcription"
+              width={64}
+              height={64} />
+          </a>
           {!hideNav &&
             <>
               <button

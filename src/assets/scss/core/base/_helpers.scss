@@ -1,3 +1,8 @@
+.horizontal-img {
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 10px;
+}
 // Hide elements, for screen readers only
 .screen-reader {
 	position: absolute;
