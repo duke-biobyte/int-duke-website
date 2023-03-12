@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
+import CardsEffect from '../novelties/CardsEffect';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -102,6 +103,7 @@ const Difference = ({
                   height={396} />
             </div>
           </div>
+
         </div>
       </div>
     </section>

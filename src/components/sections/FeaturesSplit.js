@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
+import CardsEffect from '../novelties/CardsEffect';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -82,6 +83,8 @@ const FeaturesSplit = ({
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p> */}
               </div>
+
+{/* 
               <div className={
                 classNames(
                   'split-item-image center-content-mobile reveal-from-bottom',
@@ -93,7 +96,12 @@ const FeaturesSplit = ({
                   alt="Features split 01"
                   width={528}
                   height={396} />
+              </div> */}
+
+              <div>
+                <CardsEffect />
               </div>
+
             </div>
 
             <div className="split-item">
