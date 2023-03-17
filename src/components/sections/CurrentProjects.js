@@ -81,7 +81,7 @@ const CurrentProjects = ({
                 <div className="testimonial-item-content">
                   <p className="text-sm mb-0 text-color-high">
                     We ask questions such as: What are some budding technologies that could be transforming in a decade? What are some innovative use cases of existing technologies? <br></br><br></br>
-                    We host regular speaker events and biotechnology podcasts. In the past, we have invited speakers from <u><a href='https://www.tavrostx.com'>Tavros Therapeutics</a></u>, <u><a href='https://www.fuqua.duke.edu'>Duke Fuqua School of Business</a></u>, <u><a href='https://www.dent.umich.edu'>University of Michigan School of Dentistry</a></u>, and <u><a href='https://www.cajalneuro.com'>Cajal Neuroscience</a></u>.
+                    We host regular speaker events and biotechnology podcasts. In the past, we have invited speakers from <u><a href='https://www.tavrostx.com'>Tavros Therapeutics</a></u>, <u><a href='https://www.fuqua.duke.edu'>Duke Fuqua School of Business</a></u>, <u><a href='https://www.dent.umich.edu'>University of Michigan School of Dentistry</a></u>, and <u><a href='https://www.cajalneuro.com'>Cajal Neuroscience</a></u>. More speakers and podcast events will come soon.
                       </p>
                 </div>
                 <div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">

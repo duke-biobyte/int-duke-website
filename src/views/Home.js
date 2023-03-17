@@ -10,6 +10,7 @@ import PeopleTiles from '../components/sections/PeopleTiles';
 import Cta from '../components/sections/Cta';
 import SEO from 'react-seo-component'
 import CalendarSection from '../components/sections/CalendarSection';
+import Podcast from '../components/sections/Podcast';
 
 const Home = () => {
 
@@ -29,6 +30,7 @@ const Home = () => {
       <Hero className="illustration-section-01" />
       <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
       <Difference invertMobile topDivider imageFill className="illustration-section-03" />
+      <Podcast invertMobile topDivider imageFill className="illustration-section-03" />
       <Showcase invertMobile topDivider imageFill className="illustration-section-03" />
       <CurrentProjects topDivider />
       <PeopleTiles/>

@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@ericz1803/react-google-calendar": "^4.2.2",
+    "@react-three/fiber": "^8.12.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "react": "^16.14.0",
@@ -16,6 +17,7 @@
     "react-scripts": "^3.4.1",
     "react-seo-component": "^2.0.2",
     "sass": "^1.49.7",
+    "three": "^0.150.1",
     "vercel": "^28.10.0"
   },
   "repository": {

@@ -149,10 +149,40 @@ const Showcase = ({
             </div>
           </div>
 
-          {/* <SectionSubHeader data={futureEventsSubheader} className="center-content" /> */}
+          <SectionSubHeader data={futureEventsSubheader} className="center-content" />
 
-          {/* <div className={splitClasses}>
-          </div> */}
+
+          <div className={splitClasses}>
+
+            <div className="split-item">
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                <Image
+                  src={require('./../../assets/images/events/emmanuel.png')}
+                  alt="Speaker event with Emmanuel Noutahi, Head of Platforms at Valence Discovery"
+                  width={528}
+                  height={396} />
+              </div>
+
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                <Image
+                  src={require('./../../assets/images/events/doherty.png')}
+                  alt="Speaker event with Michael Quinn Doherty, Director of Formulation Development at MedPharm US"
+                  width={528}
+                  height={396} />
+              </div>
+
+            </div>
+          </div>
 
         </div>
       </div>
