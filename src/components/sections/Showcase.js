@@ -61,7 +61,7 @@ const Showcase = ({
   }
 
   const futureEventsSubheader = {
-    title: 'Future Public Events',
+    title: 'Planned Public Events',
     paragraph: ''
   }
 
