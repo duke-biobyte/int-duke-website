@@ -27,11 +27,11 @@ const Home = () => {
         siteLocale='en_US'
         author='Jaden Long'
       />
-      <Hero className="illustration-section-01" />
-      <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
-      <Difference invertMobile topDivider imageFill className="illustration-section-03" />
-      <Podcast invertMobile topDivider imageFill className="illustration-section-03" />
-      <Showcase invertMobile topDivider imageFill className="illustration-section-03" />
+      <Hero />
+      <FeaturesSplit invertMobile topDivider imageFill />
+      <Difference invertMobile topDivider imageFill />
+      <Podcast invertMobile topDivider imageFill />
+      <Showcase invertMobile topDivider imageFill />
       <CurrentProjects topDivider />
       <PeopleTiles/>
       <CalendarSection />

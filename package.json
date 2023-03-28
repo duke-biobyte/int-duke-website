@@ -5,8 +5,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@ericz1803/react-google-calendar": "^4.2.2",
+    "@react-three/drei": "^9.58.1",
     "@react-three/fiber": "^8.12.0",
     "classnames": "^2.2.6",
+    "leva": "^0.9.34",
     "lodash": "^4.17.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,7 +20,10 @@
     "react-seo-component": "^2.0.2",
     "sass": "^1.49.7",
     "three": "^0.150.1",
-    "vercel": "^28.10.0"
+    "three-stdlib": "^2.21.8",
+    "uuid-by-string": "^4.0.0",
+    "vercel": "^28.10.0",
+    "wouter": "^2.10.0"
   },
   "repository": {
     "type": "git",

@@ -175,8 +175,12 @@
 	cursor: pointer;
   }
 
-  .card-text {
+  .text-center {
     text-align: center;
+  }
+
+  .card-text {
+    /* text-align: center; */
     /* vertical-align: middle; */
     font-family: sans-serif;
     font-weight: bold;

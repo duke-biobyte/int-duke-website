@@ -21,6 +21,8 @@ const defaultProps = {
   alt: undefined
 }
 
+const centerStyle = {textAlign:"center", width:'100%'};
+
 const CardsEffect = ({
   className,
   src,
@@ -38,7 +40,7 @@ const CardsEffect = ({
           </div>
 
           <div class="big-card card card-text">
-            <div>
+            <div style={centerStyle}>
               Science + Research
             </div>
           </div>
@@ -47,7 +49,7 @@ const CardsEffect = ({
           </div>
 
           <div class="big-card card card-text">
-            <div>
+            <div style={centerStyle}>
               Biotech + Entrepreneurship
             </div>
           </div>
@@ -56,7 +58,7 @@ const CardsEffect = ({
           </div>
 
           <div class="big-card card card-text">
-            <div>
+            <div style={centerStyle}>
               Computational Biology
             </div>
           </div>
@@ -65,7 +67,7 @@ const CardsEffect = ({
           </div>
 
           <div class="big-card card card-text">
-            <div>
+            <div style={centerStyle}>
               Healthcare + Public Policy
             </div>
           </div>

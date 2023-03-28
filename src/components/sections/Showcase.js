@@ -4,6 +4,7 @@ import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import SectionSubHeader from './partials/SectionSubheader'
 import Image from '../elements/Image';
+// import GalleryTest from '../novelties/three/GalleryTest';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -185,6 +186,11 @@ const Showcase = ({
           </div>
 
         </div>
+
+        {/* <div style={{aspectRatio: "2/1"}}>
+          <GalleryTest />
+        </div> */}
+
       </div>
     </section>
   );

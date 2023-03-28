@@ -5,6 +5,10 @@ import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 import Image from '../elements/Image';
 import Modal from '../elements/Modal';
+import SpinningBox from '../novelties/three/SpinningBox';
+import StarsScene from '../novelties/three/Stars';
+import CameraController from '../novelties/three/CameraController';
+import { Canvas } from '@react-three/fiber';
 
 const propTypes = {
   ...SectionProps.types
@@ -58,7 +62,17 @@ const Hero = ({
       className={outerClasses}
     >
       <div className="container-sm">
+
+        <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "-9999"}}>
+          <SpinningBox />
+        </div>
+
+        {/* <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "-9999"}}>
+          <StarsScene />
+        </div> */}
+
         <div className={innerClasses}>
+
           <div className="hero-content">
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">

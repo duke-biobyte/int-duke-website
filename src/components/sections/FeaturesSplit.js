@@ -4,6 +4,11 @@ import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
 import CardsEffect from '../novelties/CardsEffect';
+// import SpinningBox from '../novelties/three/SpinningBox';
+// import ASCIITorusKnot from '../novelties/three/ASCIITorusKnot';
+import AmazingShadow from '../novelties/three/AmazingShadow';
+import ImportModelExample from '../novelties/three/ImportModelExample';
+// import GalleryTest from '../novelties/three/GalleryTest';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -73,23 +78,33 @@ const FeaturesSplit = ({
 
               <div>
                 <CardsEffect />
+                {/* <SpinningBox /> */}
+                {/* <GalleryTest /> */}
               </div>
 
             </div>
 
             <div className="split-item">
+
               <div className={
                 classNames(
                   'split-item-image center-content-mobile reveal-from-bottom',
                   imageFill && 'split-item-image-fill'
                 )}
                 data-reveal-container=".split-item">
+                  <div style={{aspectRatio: "1.5"}}>
+                    {/* <ImportModelExample /> */}
+                  <AmazingShadow />
+                  </div>
+{/* 
                 <Image
                   src={require('./../../assets/images/multidisciplinary.png')}
                   alt="Features split 01"
                   width={528}
-                  height={396} />
+                  height={396} /> */}
+
               </div>
+
               <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
                 <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
                   We are
