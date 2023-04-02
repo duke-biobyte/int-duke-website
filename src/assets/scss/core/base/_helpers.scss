@@ -599,3 +599,13 @@ img.has-shadow {
 		}
 	}
 }
+
+.stick-to-bottom {
+	width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3%;
+    bottom: 0px;
+	position: absolute;
+    margin-right: 15%;
+}

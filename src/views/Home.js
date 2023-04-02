@@ -1,5 +1,6 @@
 import React from 'react';
 // import sections
+import Background from '../components/sections/Background';
 import Hero from '../components/sections/Hero';
 import FeaturesTiles from '../components/sections/FeaturesTiles';
 import FeaturesSplit from '../components/sections/FeaturesSplit';
@@ -21,12 +22,13 @@ const Home = () => {
         titleTemplate="InTranscription@Duke"
         titleSeparator=' - '
         description='InTranscription@Duke is the premier biotechnology club for undergraduate students at Duke. We host biotech-related projects and regularly invite industry leaders for talks.'
-        image='../assets/images/logo.svg'
+        image='../assets/images/splash-image.png'
         pathname='intduke.com'
         siteLanguage='en'
         siteLocale='en_US'
         author='Jaden Long'
       />
+      <Background />
       <Hero />
       <FeaturesSplit invertMobile topDivider imageFill />
       <Difference invertMobile topDivider imageFill />

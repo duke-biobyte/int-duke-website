@@ -8,9 +8,11 @@ import { Canvas } from '@react-three/fiber'
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
+import AltLayout from './layouts/AltLayout';
 
 // Views 
 import Home from './views/Home';
+import AltHome from './views/AltHome';
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
@@ -39,6 +41,7 @@ const App = () => {
       children={() => (
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
         </Switch>
       )} />
   );
