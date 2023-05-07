@@ -6,6 +6,7 @@ import Logo3DGeometry from './Logo3DGeometry'
 import Logo3D from './Logo3D'
 import { ProteinModel } from './ProteinGeometry'
 import CameraController from './CameraController'
+import { useControls } from 'leva'
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -13,6 +14,7 @@ function Box(props) {
   // Hold state for hovered and clicked events
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
+  // const { scale } = useControls({ scale: { value: 10, min: 0, max: 20 } })
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   // Return the view, these are regular Threejs elements expressed in JSX
@@ -40,7 +42,7 @@ function Box(props) {
   )
 }
 
-const SpinningBox = () => {
+const SpinningProteinBackground = () => {
   // function trackMouseLocation(event) {
   //   var x = event.clientX;
   //   var y = event.clientY;
@@ -67,4 +69,4 @@ const SpinningBox = () => {
   )
 }
 
-export default SpinningBox;
+export default SpinningProteinBackground;

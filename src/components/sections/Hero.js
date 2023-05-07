@@ -5,7 +5,7 @@ import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 import Image from '../elements/Image';
 import Modal from '../elements/Modal';
-import SpinningBox from '../novelties/three/SpinningBox';
+import SpinningProteinBackground from '../novelties/three/SpinningProteinBackground';
 import StarsScene from '../novelties/three/Stars';
 import CameraController from '../novelties/three/CameraController';
 import { Canvas } from '@react-three/fiber';

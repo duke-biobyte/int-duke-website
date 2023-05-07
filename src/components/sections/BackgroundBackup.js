@@ -1,5 +1,5 @@
 import React from 'react';
-import SpinningBox from "../novelties/three/SpinningBox"
+import SpinningProteinBackground from "../novelties/three/SpinningProteinBackground"
 import ASCIITorusKnot from '../novelties/three/ASCIITorusKnot';
 
 const Background = (props) => {
@@ -8,7 +8,7 @@ const Background = (props) => {
     var i = props.backgroundIndex
 
     if (i == 1) {
-      background = <SpinningBox />
+      background = <SpinningProteinBackground />
     } else {
       background = <ASCIITorusKnot />
     }

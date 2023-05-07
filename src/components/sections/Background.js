@@ -1,5 +1,5 @@
 import React from 'react';
-import SpinningBox from "../novelties/three/SpinningBox"
+import SpinningProteinBackground from "../novelties/three/SpinningProteinBackground"
 import ASCIITorusKnot from '../novelties/three/ASCIITorusKnot';
 
 class Background extends React.Component {
@@ -17,7 +17,7 @@ class Background extends React.Component {
         if (i == 1) {
           this.background = <ASCIITorusKnot />
         } else {
-          this.background = <SpinningBox />
+          this.background = <SpinningProteinBackground />
         }
 
 
@@ -30,6 +30,7 @@ class Background extends React.Component {
 
     return Background(this.props)
   }
+
 }
 
 export default Background

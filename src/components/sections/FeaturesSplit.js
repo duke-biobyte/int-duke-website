@@ -4,11 +4,8 @@ import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
 import CardsEffect from '../novelties/CardsEffect';
-// import SpinningBox from '../novelties/three/SpinningBox';
-// import ASCIITorusKnot from '../novelties/three/ASCIITorusKnot';
 import AmazingShadow from '../novelties/three/AmazingShadow';
 import ImportModelExample from '../novelties/three/ImportModelExample';
-// import GalleryTest from '../novelties/three/GalleryTest';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -78,7 +75,6 @@ const FeaturesSplit = ({
 
               <div>
                 <CardsEffect />
-                {/* <SpinningBox /> */}
                 {/* <GalleryTest /> */}
               </div>
 
