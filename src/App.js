@@ -5,6 +5,7 @@ import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
 import ReactDOM from 'react-dom'
 import { Canvas } from '@react-three/fiber'
+import PHCanvas from './views/PHCanvas';
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
@@ -42,6 +43,7 @@ const App = () => {
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
+          <AppRoute exact path="/ph" component={PHCanvas} />
         </Switch>
       )} />
   );
