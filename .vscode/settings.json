@@ -1,0 +1,16 @@
+{
+    "restoreTerminals.terminals": [
+        {
+          "splitTerminals": [
+            {
+              "name": "server",
+              "commands": ["npm start"]
+            },
+            {
+              "name": "client",
+              "commands": [""]
+            }
+          ]
+        }
+      ]
+}

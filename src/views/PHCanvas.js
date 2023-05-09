@@ -2,15 +2,13 @@
 
 import React, { useRef, useState } from 'react';
 // import sections
-import { MetaTags } from 'react-meta-tags';
-import AltPage from '../components/sections/AltPage';
-import ASCIITorusKnot from '../components/novelties/three/ASCIITorusKnot';
 import { PDBLoader } from 'three-stdlib';
 import { OrbitControls } from '@react-three/drei';
-import { Canvas, useLoader, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial} from '@react-three/drei';
+import { Canvas, useLoader, useFrame, extend } from '@react-three/fiber';
+import { Environment } from '@react-three/drei';
 import { useControls } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
+import SEO from 'react-seo-component';
 
 
 // An interesting looking material from https://codesandbox.io/s/ledhe1
@@ -43,34 +41,54 @@ const GradientMaterial = () => {
 }
 
 
+const BallMesh = ({position, scale, color}) => {
+  const color_to_string = (color) => {
+    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+  }
+
+  return (
+        <mesh castShadow position={position} scale={scale}>
+          <sphereGeometry />
+          {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
+          <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5}/>
+          {/* <ambientLight intensity={0.5} /> */}
+        </mesh>
+  )
+}
+
 // The actual component. This component takes up the entire page (see the style field in <div>)
 const PHCanvas = () => {
 
   const pdb = useLoader(PDBLoader, '/caffeine.pdb')
-  const [pdb_pos] = useState(() => pdb.geometryAtoms.getAttribute('position').array)
-
-  const { x, y, z } = useControls({
-    x: { value: 0, min: -10, max: 10},
-    y: { value: 0, min: -10, max: 10},
-    z: { value: 0, min: -10, max: 10}
-  })
-
-
-  const { scale } = useControls({ scale: { value: 1, min: 0, max: 10 } })
+  const [atoms] = useState(() => pdb.json.atoms)
+  const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
   return (
     <>
+      <SEO
+        title="Persistent Homology"
+        titleTemplate="InT@Duke"
+        titleSeparator=' - '
+        description=''
+        image='../assets/images/splash-image.png'
+        siteLanguage='en'
+        siteLocale='en_US'
+      />
+
       <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
+
         <Canvas>
-          <mesh castShadow position={[x, y, z]} scale={scale}>
-            <sphereGeometry />
-            <meshPhongMaterial metalness={1} color={'hotpink'}/>
-            <ambientLight intensity={0.5} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-            <pointLight position={[-10, -10, -10]} />
-          </mesh>
+          {
+            atoms.map((atom, idx) => (
+              <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />
+            ))
+          }
           <OrbitControls />
+
+          {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
+          <Environment preset="lobby" background />
         </Canvas>
+
       </div>
     </>
   );
