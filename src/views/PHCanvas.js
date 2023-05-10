@@ -9,7 +9,7 @@ import { Environment } from '@react-three/drei';
 import { useControls } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
 import SEO from 'react-seo-component';
-
+import { Perf } from 'r3f-perf'
 
 // An interesting looking material from https://codesandbox.io/s/ledhe1
 // Performs well with rotating the camera, but not from scaling the object
@@ -59,7 +59,15 @@ const BallMesh = ({position, scale, color}) => {
 // The actual component. This component takes up the entire page (see the style field in <div>)
 const PHCanvas = () => {
 
-  const pdb = useLoader(PDBLoader, '/caffeine.pdb')
+  const { pdb_file } = useControls({pdb_file: {value: '/pdb/caffeine.pdb',
+    options: {
+      "1fsd":  "/pdb/1fsd.pdb",
+      "Caffeine":  "/pdb/caffeine.pdb",
+      "Ethanol":  "/pdb/ethanol.pdb",
+      "Glucose":  "/pdb/glucose.pdb",
+  }}})
+
+  const pdb = useLoader(PDBLoader, pdb_file)
   const [atoms] = useState(() => pdb.json.atoms)
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
@@ -78,6 +86,7 @@ const PHCanvas = () => {
       <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
 
         <Canvas>
+          <Perf position="top-left" />
           {
             atoms.map((atom, idx) => (
               <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />
