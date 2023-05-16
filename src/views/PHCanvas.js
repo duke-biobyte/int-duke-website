@@ -10,6 +10,7 @@ import { useControls } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
 import SEO from 'react-seo-component';
 import { Perf } from 'r3f-perf'
+import ReactVisTest from '../components/novelties/react-vis/Test';
 
 // An interesting looking material from https://codesandbox.io/s/ledhe1
 // Performs well with rotating the camera, but not from scaling the object
@@ -59,17 +60,28 @@ const BallMesh = ({position, scale, color}) => {
 // The actual component. This component takes up the entire page (see the style field in <div>)
 const PHCanvas = () => {
 
-  const { pdb_file } = useControls({pdb_file: {value: '/pdb/caffeine.pdb',
+  const { pdb_file } = useControls('Broken feature', {pdb_file: {value: '/pdb/caffeine.pdb',
     options: {
       "1fsd":  "/pdb/1fsd.pdb",
       "Caffeine":  "/pdb/caffeine.pdb",
       "Ethanol":  "/pdb/ethanol.pdb",
       "Glucose":  "/pdb/glucose.pdb",
-  }}})
+  }}},
+  {
+    "order": 99,
+    "collapsed": true
+  })
 
   const pdb = useLoader(PDBLoader, pdb_file)
   const [atoms] = useState(() => pdb.json.atoms)
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
+
+  // // loads the homology json file into an array
+  // const homology = fetch('/homologies/caffeine.json')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //       // data now contains the array of floats
+  //   });
 
   return (
     <>
@@ -86,7 +98,7 @@ const PHCanvas = () => {
       <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
 
         <Canvas>
-          <Perf position="top-left" />
+          <Perf position="bottom-left" />
           {
             atoms.map((atom, idx) => (
               <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />
@@ -97,6 +109,10 @@ const PHCanvas = () => {
           {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
           <Environment preset="lobby" background />
         </Canvas>
+
+        <div style={{width:"20%", height: "20%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
+          <ReactVisTest />
+        </div>
 
       </div>
     </>

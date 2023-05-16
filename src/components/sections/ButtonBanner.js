@@ -21,7 +21,6 @@ class ButtonBanner extends React.Component {
       this.setState({
         backgroundIndex: 0
       })
-
     }
 
     render() {

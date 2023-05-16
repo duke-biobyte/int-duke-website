@@ -14,6 +14,9 @@ export default function StarsScene() {
 function Stars(props) {
   const ref = useRef()
   const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }))
+
+  console.log(sphere)
+
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10
     ref.current.rotation.y -= delta / 15
