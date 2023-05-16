@@ -1,6 +1,6 @@
 // This is a page for playing around with the persistent homology animation
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Fragment, useEffect } from 'react';
 // import sections
 import { PDBLoader } from 'three-stdlib';
 import { OrbitControls } from '@react-three/drei';
@@ -10,7 +10,9 @@ import { useControls } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
 import SEO from 'react-seo-component';
 import { Perf } from 'r3f-perf'
-import ReactVisTest from '../components/novelties/react-vis/Test';
+import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair } from 'react-vis';
+import RVStyles from 'react-vis-styles';
+import '../components/novelties/react-vis/HideTooltip.css';
 
 // An interesting looking material from https://codesandbox.io/s/ledhe1
 // Performs well with rotating the camera, but not from scaling the object
@@ -48,16 +50,55 @@ const BallMesh = ({position, scale, color}) => {
   }
 
   return (
-        <mesh castShadow position={position} scale={scale}>
-          <sphereGeometry />
-          {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
-          <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5}/>
-          {/* <ambientLight intensity={0.5} /> */}
-        </mesh>
+    <mesh castShadow position={position} scale={scale}>
+      <sphereGeometry />
+      {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
+      <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5}/>
+      {/* <ambientLight intensity={0.5} /> */}
+    </mesh>
   )
 }
 
-// The actual component. This component takes up the entire page (see the style field in <div>)
+function PHPlot(props) {
+  var y = 0
+  const data = props.data
+
+  const betti_0 = data.filter((d) => d[2] === 0).map((d) => {y += 1; return [{x: d[0], y: y}, {x: d[1], y: y}]})
+  const betti_1 = data.filter((d) => d[2] === 1).map((d) => {y += 1; return [{x: d[0], y: y}, {x: d[1], y: y}]})
+  const betti_2 = data.filter((d) => d[2] === 2).map((d) => {y += 1; return [{x: d[0], y: y}, {x: d[1], y: y}]})
+
+  return (
+    <Fragment>
+      <RVStyles />
+      <FlexibleXYPlot>
+        <LineSeries data={data} />
+        {
+          betti_0.map((d) => {
+            return <LineSeries data={d} color={'red'} />
+          })
+        }
+        {
+          betti_1.map((d) => {
+            return <LineSeries data={d} color={'blue'} />
+          })
+        }
+        {
+          betti_2.map((d) => {
+            return <LineSeries data={d} color={'yellow'} />
+          })
+        }
+        <Crosshair
+          values={[{x: props.scale, y: 0}]}
+          style={{line: {backgroundColor: 'blue'}}}
+        />
+        <XAxis />
+      </FlexibleXYPlot>
+    </Fragment>
+
+  )
+}
+
+
 const PHCanvas = () => {
 
   const { pdb_file } = useControls('Broken feature', {pdb_file: {value: '/pdb/caffeine.pdb',
@@ -76,12 +117,16 @@ const PHCanvas = () => {
   const [atoms] = useState(() => pdb.json.atoms)
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
-  // // loads the homology json file into an array
-  // const homology = fetch('/homologies/caffeine.json')
-  //   .then(response => response.json())
-  //   .then(data => {
-  //       // data now contains the array of floats
-  //   });
+  const [PHData, setPHData] = useState([]);
+
+  useEffect(() => {
+    fetch('/homologies/caffeine.json')
+      .then(response => response.json())
+      .then(jsonData => {
+        setPHData(jsonData);
+      });
+  }, []); // Empty array as dependency means this effect will only run once, similar to componentDidMount
+
 
   return (
     <>
@@ -110,8 +155,9 @@ const PHCanvas = () => {
           <Environment preset="lobby" background />
         </Canvas>
 
-        <div style={{width:"20%", height: "20%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
-          <ReactVisTest />
+        {/* The persistence plot */}
+        <div style={{width:"20%", height: "20%", position: "fixed", top: "0", left: "0", zIndex: "1", overflow: "hidden"}}>
+          <PHPlot data={PHData} scale={scale} />
         </div>
 
       </div>

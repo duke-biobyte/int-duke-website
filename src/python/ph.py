@@ -2,7 +2,7 @@
 # Exports the output into a json file
 
 import typer
-from gtda.homology import VietorisRipsPersistence
+from gtda.homology import VietorisRipsPersistence, EuclideanCechPersistence
 import numpy as np
 from pathlib import Path
 from Bio.PDB import PDBParser
@@ -26,7 +26,7 @@ def calculate_persistence_homology(pdb_file: Path, output_file: Path):
     coordinates = np.array(coordinates)
 
     # Calculate the persistent homology
-    vr = VietorisRipsPersistence(homology_dimensions=[0, 1, 2])
+    vr = EuclideanCechPersistence(homology_dimensions=[0, 1, 2])
     diagram = vr.fit_transform(coordinates[None, :, :])[0]
     diagram = diagram.tolist()
 

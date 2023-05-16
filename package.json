@@ -23,6 +23,7 @@
     "react-scripts": "^5.0.1",
     "react-seo-component": "^2.0.2",
     "react-vis": "^1.11.12",
+    "react-vis-styles": "^0.3.7",
     "sass": "^1.49.7",
     "three": "^0.150.1",
     "three-stdlib": "^2.21.8",
