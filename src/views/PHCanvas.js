@@ -101,7 +101,18 @@ function PHPlot(props) {
 
 const PHCanvas = () => {
 
-  const { pdb_file } = useControls('Broken feature', {pdb_file: {value: '/pdb/caffeine.pdb',
+  // Leva controls
+  const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
+
+  const { show_performance } = useControls('Debug controls', {
+    show_performance: {value: true}
+  },
+  {
+    "order": 98,
+    "collapsed": true
+  })
+
+  const { pdb_file } = useControls('Broken features', {pdb_file: {value: '/pdb/caffeine.pdb',
     options: {
       "1fsd":  "/pdb/1fsd.pdb",
       "Caffeine":  "/pdb/caffeine.pdb",
@@ -113,9 +124,9 @@ const PHCanvas = () => {
     "collapsed": true
   })
 
+
   const pdb = useLoader(PDBLoader, pdb_file)
   const [atoms] = useState(() => pdb.json.atoms)
-  const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
   const [PHData, setPHData] = useState([]);
 
@@ -143,7 +154,9 @@ const PHCanvas = () => {
       <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
 
         <Canvas>
-          <Perf position="bottom-left" />
+          {
+            show_performance && <Perf position="bottom-left" />
+          }
           {
             atoms.map((atom, idx) => (
               <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />

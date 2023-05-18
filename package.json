@@ -1,6 +1,6 @@
 {
-  "name": "open-react-template",
-  "version": "0.1.0",
+  "name": "intduke-website",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -28,7 +28,7 @@
     "three": "^0.150.1",
     "three-stdlib": "^2.21.8",
     "uuid-by-string": "^4.0.0",
-    "vercel": "^28.10.0",
+    "vercel": "^29.3.1",
     "wouter": "^2.10.0"
   },
   "repository": {
