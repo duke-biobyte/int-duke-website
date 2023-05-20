@@ -138,6 +138,39 @@ const FiltrationVisualization = (props) => {
   )
 }
 
+// Returns the center given a list of atoms
+const getCenter = (atoms) => {
+  var v = [0, 0, 0]
+  atoms.map((a) => {
+    v[0] += a[0]
+    v[1] += a[1]
+    v[2] += a[2]
+  })
+
+  const center = v.map((c) => - c / atoms.length)
+  return center
+}
+
+
+const MoleculeMesh = (props) => {
+  const atoms = props.atoms
+  const scale = props.scale
+  const center = getCenter(atoms)
+
+  return (
+    <>
+      <group position={center}>
+        {
+          atoms.map((atom, idx) => (
+            <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />
+          ))
+        }
+      </group>
+    </>
+
+  )
+}
+
 const PHCanvas = () => {
   const [atoms, setAtoms] = useState([])
 
@@ -153,7 +186,7 @@ const PHCanvas = () => {
   })
 
   const { pdb_file } = useControls({
-    pdb_file: {value: '/pdb/caffeine.pdb',
+    pdb_file: {value: "/pdb/caffeine.pdb",
     options: {
       // "1fsd":  "/pdb/1fsd.pdb",
       "Caffeine":  "/pdb/caffeine.pdb",
@@ -218,23 +251,16 @@ const PHCanvas = () => {
       <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
 
         <Canvas>
+
           {
             show_performance && <Perf position="bottom-left" />
           }
-          {
-            atoms.map((atom, idx) => (
-              <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />
-            ))
-          }
+
+          <MoleculeMesh atoms={atoms} scale={scale} />
           <OrbitControls />
 
           {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
           <Environment preset="lobby" background />
-
-          {/* <line>
-            <bufferGeometry ref={lineRef}/>
-            <lineBasicMaterial />
-          </line> */}
 
           <FiltrationVisualization atoms={atoms}/>
 
