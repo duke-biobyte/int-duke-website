@@ -1,11 +1,11 @@
 // This is a page for playing around with the persistent homology animation
 
 import React, { useRef, useState, Fragment, useEffect } from 'react';
+import * as THREE from 'three';
 // import sections
 import { PDBLoader } from 'three-stdlib';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls,  Environment, Line  } from '@react-three/drei';
 import { Canvas, useLoader, useFrame, extend } from '@react-three/fiber';
-import { Environment } from '@react-three/drei';
 import { useControls } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
 import SEO from 'react-seo-component';
@@ -13,6 +13,10 @@ import { Perf } from 'r3f-perf'
 import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair } from 'react-vis';
 import RVStyles from 'react-vis-styles';
 import '../components/novelties/react-vis/HideTooltip.css';
+import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline';
+
+
+extend({ MeshLineGeometry, MeshLineMaterial })
 
 // An interesting looking material from https://codesandbox.io/s/ledhe1
 // Performs well with rotating the camera, but not from scaling the object
@@ -50,8 +54,8 @@ const BallMesh = ({position, scale, color}) => {
   }
 
   return (
-    <mesh castShadow position={position} scale={scale}>
-      <sphereGeometry />
+    <mesh castShadow position={position} >
+      <sphereGeometry args={[scale, 16, 8]}/>
       {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
       <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5}/>
       {/* <ambientLight intensity={0.5} /> */}
@@ -98,8 +102,44 @@ function PHPlot(props) {
   )
 }
 
+const FiltrationVisualization = (props) => {
+  const atoms = props.atoms
+  const coordinates = atoms.map((a) => [a[0], a[1], a[2]])
+
+  const combinations = (arr) => {
+    var result = []
+    for (var i = 0; i < arr.length-1; i++) {
+      for (var j = i+1; j < arr.length; j++) {
+        result.push([arr[i], arr[j]])
+      }
+    }
+    return result
+  }
+
+  const edges = combinations(coordinates).map((c) => c.flat())
+
+  return (
+    <>
+    {
+      edges.slice(0, 5).map((e, idx) => {
+        <mesh>
+            <meshLineGeometry points={e} />
+            <meshLineMaterial lineWidth={0.03} color="hotpink" />
+        </mesh>
+      })
+
+        // <mesh>
+        //     <meshLineGeometry points={[1, 2, 3, 4, 5, 6]} />
+        //     <meshLineMaterial lineWidth={0.03} color="hotpink" />
+        // </mesh>
+
+    }
+    </>
+  )
+}
 
 const PHCanvas = () => {
+  const [atoms, setAtoms] = useState([])
 
   // Leva controls
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
@@ -112,21 +152,30 @@ const PHCanvas = () => {
     "collapsed": true
   })
 
-  const { pdb_file } = useControls('Broken features', {pdb_file: {value: '/pdb/caffeine.pdb',
+  const { pdb_file } = useControls({
+    pdb_file: {value: '/pdb/caffeine.pdb',
     options: {
-      "1fsd":  "/pdb/1fsd.pdb",
+      // "1fsd":  "/pdb/1fsd.pdb",
       "Caffeine":  "/pdb/caffeine.pdb",
       "Ethanol":  "/pdb/ethanol.pdb",
       "Glucose":  "/pdb/glucose.pdb",
-  }}},
+    },
+  }},
   {
     "order": 99,
     "collapsed": true
   })
 
+  const loader = new PDBLoader()
 
-  const pdb = useLoader(PDBLoader, pdb_file)
-  const [atoms] = useState(() => pdb.json.atoms)
+  useEffect(() => {
+    if (pdb_file) {
+      loader.load(pdb_file, (pdb) => {
+        const atoms = pdb.json.atoms
+        setAtoms(atoms)
+      })
+    }
+  }, [pdb_file])
 
   const [PHData, setPHData] = useState([]);
 
@@ -138,6 +187,21 @@ const PHCanvas = () => {
       });
   }, []); // Empty array as dependency means this effect will only run once, similar to componentDidMount
 
+  const vertices = new Float32Array([
+    0.0, 0.0, 0.0,
+    1.0, 0.0, 0.0,
+    0.0, 1.0, 0.0,
+    1.0, 0.0, 0.0,
+    1.0, 1.0, 0.0,
+    0.0, 1.0, 0.0
+  ]);
+
+  const lineRef = useRef(null)
+  useEffect(() => {
+    if(lineRef.current) {
+      lineRef.current.setAttribute( 'position', new THREE.BufferAttribute(new Float32Array(vertices), 3));
+    }
+  })
 
   return (
     <>
@@ -166,6 +230,14 @@ const PHCanvas = () => {
 
           {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
           <Environment preset="lobby" background />
+
+          {/* <line>
+            <bufferGeometry ref={lineRef}/>
+            <lineBasicMaterial />
+          </line> */}
+
+          <FiltrationVisualization atoms={atoms}/>
+
         </Canvas>
 
         {/* The persistence plot */}
