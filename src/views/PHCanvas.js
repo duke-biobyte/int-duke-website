@@ -5,8 +5,8 @@ import * as THREE from 'three';
 // import sections
 import { PDBLoader } from 'three-stdlib';
 import { OrbitControls,  Environment, Line  } from '@react-three/drei';
-import { Canvas, useLoader, useFrame, extend } from '@react-three/fiber';
-import { useControls } from 'leva';
+import { Canvas, useFrame, extend } from '@react-three/fiber';
+import { useControls, folder } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
 import SEO from 'react-seo-component';
 import { Perf } from 'r3f-perf'
@@ -53,11 +53,24 @@ const BallMesh = ({position, scale, color}) => {
     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`
   }
 
+  const { x_segments, y_segments } = useControls("Debug Controls",{
+    'Sphere Parameters': folder({
+      x_segments: { value: 16, min: 1, max: 64, step: 1 },
+      y_segments: { value: 8, min: 1, max: 64, step: 1 },
+    })
+
+  },
+  {
+    "order": 98,
+    "collapsed": true
+  }
+  )
+
   return (
     <mesh castShadow position={position} >
-      <sphereGeometry args={[scale, 16, 8]}/>
+      <sphereGeometry args={[scale, x_segments, y_segments]} />
       {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
-      <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5}/>
+      <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
       {/* <ambientLight intensity={0.5} /> */}
     </mesh>
   )
@@ -105,6 +118,7 @@ function PHPlot(props) {
 const FiltrationVisualization = (props) => {
   const atoms = props.atoms
   const coordinates = atoms.map((a) => [a[0], a[1], a[2]])
+  const filtration_parameter = props.filtration_parameter
 
   const combinations = (arr) => {
     var result = []
@@ -116,25 +130,33 @@ const FiltrationVisualization = (props) => {
     return result
   }
 
-  const edges = combinations(coordinates).map((c) => c.flat())
+  const euclideanDistance = (a, b) => Math.hypot(...Object.keys(a).map(k => b[k] - a[k]));
+
+  const edges = combinations(coordinates).map((c) =>  (
+    {
+      "line": [c[0], c[1]].flat(),
+      "distance": euclideanDistance(c[0], c[1])
+    }
+  )
+  )
+  const center = getCenter(atoms)
 
   return (
-    <>
-    {
-      edges.slice(0, 5).map((e, idx) => {
-        <mesh>
-            <meshLineGeometry points={e} />
-            <meshLineMaterial lineWidth={0.03} color="hotpink" />
-        </mesh>
-      })
-
-        // <mesh>
-        //     <meshLineGeometry points={[1, 2, 3, 4, 5, 6]} />
-        //     <meshLineMaterial lineWidth={0.03} color="hotpink" />
-        // </mesh>
-
-    }
-    </>
+    <group position={center}>
+      {
+        edges.map((e, idx) =>
+        {
+          if (e.distance < filtration_parameter) {
+            return (
+              <mesh>
+                  <meshLineGeometry points={e.line} />
+                  <meshLineMaterial lineWidth={0.03} color="hotpink" />
+              </mesh>
+            )
+          } else { return null }
+        })
+      }
+    </group>
   )
 }
 
@@ -153,8 +175,22 @@ const getCenter = (atoms) => {
 
 
 const MoleculeMesh = (props) => {
+  const { fix_ball_scale } = useControls({
+    fix_ball_scale: {
+      value: false
+    }
+  })
+
   const atoms = props.atoms
-  const scale = props.scale
+
+  var scale
+
+  if (!fix_ball_scale) {
+    scale = props.scale
+  } else {
+    scale = 0.1
+  }
+
   const center = getCenter(atoms)
 
   return (
@@ -177,7 +213,7 @@ const PHCanvas = () => {
   // Leva controls
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
-  const { show_performance } = useControls('Debug controls', {
+  const { show_performance } = useControls("Debug Controls", {
     show_performance: {value: true}
   },
   {
@@ -236,6 +272,16 @@ const PHCanvas = () => {
     }
   })
 
+  const { preset, blur } = useControls("Debug Controls", {
+    preset: {
+      value: "sunset",
+      options: ["sunset", "dawn", "night", "warehouse", "forest", "apartment", "studio", "sunny", "city", "park", "lobby", "empty"]
+    },
+    blur: {
+      value: 0.9, min: 0, max: 1, step: 0.01
+    }
+  })
+
   return (
     <>
       <SEO
@@ -260,13 +306,14 @@ const PHCanvas = () => {
           <OrbitControls />
 
           {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
-          <Environment preset="lobby" background />
+          <Environment preset={preset} background blur={blur}/>
 
-          <FiltrationVisualization atoms={atoms}/>
+          {/* Edges of the simplicial complexes */}
+          <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
 
         </Canvas>
 
-        {/* The persistence plot */}
+        {/* The persistence barcode */}
         <div style={{width:"20%", height: "20%", position: "fixed", top: "0", left: "0", zIndex: "1", overflow: "hidden"}}>
           <PHPlot data={PHData} scale={scale} />
         </div>
