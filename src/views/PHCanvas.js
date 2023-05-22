@@ -1,19 +1,25 @@
 // This is a page for playing around with the persistent homology animation
 
 import React, { useRef, useState, Fragment, useEffect } from 'react';
+
+// Three.js related imports
 import * as THREE from 'three';
-// import sections
 import { PDBLoader } from 'three-stdlib';
 import { OrbitControls,  Environment, Line  } from '@react-three/drei';
 import { Canvas, useFrame, extend } from '@react-three/fiber';
+import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline';
 import { useControls, folder } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
+
+// React related imports
 import SEO from 'react-seo-component';
 import { Perf } from 'r3f-perf'
-import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair } from 'react-vis';
+import Draggable from 'react-draggable';
+
+// react-vis related imports
+import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair, DiscreteColorLegend } from 'react-vis';
 import RVStyles from 'react-vis-styles';
 import '../components/novelties/react-vis/HideTooltip.css';
-import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline';
 
 
 extend({ MeshLineGeometry, MeshLineMaterial })
@@ -106,10 +112,17 @@ function PHPlot(props) {
         }
         <Crosshair
           values={[{x: props.scale, y: 0}]}
-          style={{line: {backgroundColor: 'blue'}}}
+          style={{line: {backgroundColor: 'azure'}}}
         />
         <XAxis />
       </FlexibleXYPlot>
+      <DiscreteColorLegend items={
+        [
+          {title: 'Betti 0 (connected components)', color: 'red'},
+          {title: 'Betti 1 (holes)', color: 'blue'},
+          {title: 'Betti 2 (voids)', color: 'yellow'}
+        ]
+      }/>
     </Fragment>
 
   )
@@ -249,7 +262,7 @@ const PHCanvas = () => {
   const [PHData, setPHData] = useState([]);
 
   useEffect(() => {
-    fetch('/homologies/caffeine.json')
+    fetch('/homologies/caf-cech.json')
       .then(response => response.json())
       .then(jsonData => {
         setPHData(jsonData);
@@ -282,6 +295,14 @@ const PHCanvas = () => {
     }
   })
 
+  const { barcode_width } = useControls("Debug Controls", {
+    barcode_width: {
+      value: 0.25, min: 0, max: 1, step: 0.01
+    }
+  })
+
+  const decimal_to_percentage = (decimal) => ((decimal * 100).toString() + "%")
+
   return (
     <>
       <SEO
@@ -313,10 +334,16 @@ const PHCanvas = () => {
 
         </Canvas>
 
-        {/* The persistence barcode */}
-        <div style={{width:"20%", height: "20%", position: "fixed", top: "0", left: "0", zIndex: "1", overflow: "hidden"}}>
-          <PHPlot data={PHData} scale={scale} />
-        </div>
+        <Draggable>
+          {/* The persistence barcode */}
+          <div style={{width: decimal_to_percentage(barcode_width), aspectRatio: "16/9", position: "fixed", top: "0", left: "0", zIndex: "1", overflow: "hidden", borderRadius: "10px", 
+          // border: "3px solid rgba(0, 0, 255, .5)"
+        }}>
+            <center>Persistence Barcode</center>
+            <PHPlot data={PHData} scale={scale} />
+          </div>
+        </Draggable>
+
 
       </div>
     </>
