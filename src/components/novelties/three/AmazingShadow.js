@@ -5,25 +5,54 @@ import { Canvas , useFrame , useThree} from '@react-three/fiber'
 import { AccumulativeShadows, RandomizedLight, Center, Environment, OrbitControls } from '@react-three/drei'
 import Logo3D from './Logo3D'
 import { ProteinModel } from './ProteinGeometry'
+import { useSpring, animated } from '@react-spring/three'
+
+const AnimatedLogo3D = animated(Logo3D)
 
 const AmazingShadow = () => {
   const angle = Math.PI / 3.5
+
+  const [springs, api] = useSpring (() => ({
+      from: {scale: 0.8},
+  }))
+
+  const handlePointerOver = () => {
+      api.start({
+          from: {
+              scale: springs.scale.get(),
+          },
+          to: {
+              scale: 1.5
+          }
+      })
+  }
+
+  const handlePointerOut = () => {
+      api.start({
+          from: {
+              scale: springs.scale.get(),
+          },
+          to: {
+              scale: 0.8
+          }
+      })
+  }
+
   return (
-    <Canvas shadows camera={{ position: [0, 0, 4.5], fov: 50 }}>
+    <Canvas shadows camera={{ position: [0, 0, 4.5], fov: 50 }} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut}>
       <group position={[0, -0.65, 0]}>
         {/* <Sphere /> */}
         {/* <mesh
         geometry={<ProteinModel />}
         ></mesh> */}
         {/* <ProteinModel /> */}
-        <Logo3D />
+        <AnimatedLogo3D scale={springs.scale}/>
         <AccumulativeShadows temporal frames={200} color="purple" colorBlend={0.5} opacity={1} scale={10} alphaTest={0.85}>
           <RandomizedLight amount={8} radius={5} ambient={0.5} position={[5, 3, 2]} bias={0.001} />
         </AccumulativeShadows>
       </group>
       <Env />
       <OrbitControls autoRotate autoRotateSpeed={4} enablePan={true} enableZoom={true} minPolarAngle={angle} maxPolarAngle={angle} />
-      {/* <OrbitControls enablePan={true} enableZoom={true} minPolarAngle={Math.PI / 2.1} maxPolarAngle={Math.PI / 2.1} /> */}
     </Canvas>
   )
 }

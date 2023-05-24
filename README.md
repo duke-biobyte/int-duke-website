@@ -57,7 +57,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Prereqs
 
-Install [Node.js](https://nodejs.org/en). Then downgrade your `npm` version to 6 via e.g. `npm install -g npm@6.14.18`.
+Install [Node.js](https://nodejs.org/en). Then downgrade your `npm` version to 6 via e.g. `npm install -g npm@6.14.18` (or use `n` and install `node/14.21.2`).
 
 ## npm scripts
 

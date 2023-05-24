@@ -33,6 +33,7 @@ const CardsEffect = ({
 }) => {
 
   return (
+    <div>
     <div class="card-body card-swiper">
       <div class="card-groups">
         <div class="card-group" data-index="0" data-status="active">
@@ -73,6 +74,8 @@ const CardsEffect = ({
           </div>
         </div>
       </div>
+    </div>
+
     </div>
   );
 }

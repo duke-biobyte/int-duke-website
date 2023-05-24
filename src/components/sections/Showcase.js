@@ -66,13 +66,6 @@ const Showcase = ({
     paragraph: ''
   }
 
-  // Eoin event
-  // MBA event
-  // Boba social
-  // Ben Lodgson
-  // Biotech Podcast
-  // Journal Club
-
   return (
     <section
       {...props}

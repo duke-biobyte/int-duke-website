@@ -54,7 +54,7 @@ const GradientMaterial = () => {
 }
 
 
-const BallMesh = ({position, scale, color}) => {
+const BallMesh = ({position, scale, color, ...props}) => {
   const color_to_string = (color) => {
     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`
   }
@@ -73,7 +73,7 @@ const BallMesh = ({position, scale, color}) => {
   )
 
   return (
-    <mesh castShadow position={position} >
+    <mesh castShadow position={position} {...props}>
       <sphereGeometry args={[scale, x_segments, y_segments]} />
       {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
       <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
@@ -351,3 +351,4 @@ const PHCanvas = () => {
 }
 
 export default PHCanvas;
+export { MoleculeMesh, BallMesh };
