@@ -269,22 +269,6 @@ const PHCanvas = () => {
       });
   }, []); // Empty array as dependency means this effect will only run once, similar to componentDidMount
 
-  const vertices = new Float32Array([
-    0.0, 0.0, 0.0,
-    1.0, 0.0, 0.0,
-    0.0, 1.0, 0.0,
-    1.0, 0.0, 0.0,
-    1.0, 1.0, 0.0,
-    0.0, 1.0, 0.0
-  ]);
-
-  const lineRef = useRef(null)
-  useEffect(() => {
-    if(lineRef.current) {
-      lineRef.current.setAttribute( 'position', new THREE.BufferAttribute(new Float32Array(vertices), 3));
-    }
-  })
-
   const { preset, blur } = useControls("Debug Controls", {
     preset: {
       value: "sunset",
