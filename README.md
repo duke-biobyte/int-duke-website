@@ -1,60 +1,5 @@
 # InT@Duke Website:
 
-<!-- Usage:
-1. [InT@Duke Website:](#intduke-website)
-         1. [`npm install`](#npm-install)
-         2. [`npm start`](#npm-start)
-         3. [`npm test`](#npm-test)
-         4. [`npm run build`](#npm-run-build)
-         5. [`npm run eject`](#npm-run-eject) -->
-
-<!-- 
-# Free React landing page template
-
-![Open React template preview](https://user-images.githubusercontent.com/2683512/78789364-545e7100-79ad-11ea-9e3c-9528c99cda8e.png)
-
-**Open** is a **free React landing page template designed** for developers/makers who want to create a quick and professional landing page for their open source projects, SaaS products, online services, and more.
-
-Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
-
-Created and maintained with ❤️ by [Cruip.com](https://cruip.com).
-
-## Live demo
-
-Check the live demo here 👉️ [https://open.cruip.com/](https://open.cruip.com/)
-
-## Open PRO
-
-[![Open Pro](https://user-images.githubusercontent.com/2683512/151177673-e56ade57-c98d-4c37-b315-d313bd14bb53.png)](https://cruip.com/)
-
-*The premium template is built on-the-top of [Tailwind CSS](https://tailwindcss.com/), and React components have been re-built from scratch.* 
-
-## Design files
-
-If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3BjiEtQ
-
-## Table of contents
-
-1. [InT@Duke Website:](#intduke-website)
-2. [Free React landing page template](#free-react-landing-page-template)
-   1. [Live demo](#live-demo)
-   2. [Open PRO](#open-pro)
-   3. [Design files](#design-files)
-   4. [Table of contents](#table-of-contents)
-   5. [Usage](#usage)
-      1. [Available Scripts](#available-scripts)
-         1. [`npm install`](#npm-install)
-         2. [`npm start`](#npm-start)
-         3. [`npm test`](#npm-test)
-         4. [`npm run build`](#npm-run-build)
-         5. [`npm run eject`](#npm-run-eject)
-
-## Usage
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Available Scripts -->
-
 ## Prereqs
 
 Install [Node.js](https://nodejs.org/en). Then downgrade your `npm` version to 6 via e.g. `npm install -g npm@6.14.18` (or use `n` and install `node/14.21.2`).
@@ -109,59 +54,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 
 ##
-<!--
-### Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Persistent homology page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This page is located at `/ph`.
 
-#### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-#### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-#### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-#### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-#### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-#### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-### Google Analytics Setup
-
-This template uses the [React Google Analytics Module](https://github.com/react-ga/react-ga).
-
-In order to track visitors, you need to set an [environment variable](https://create-react-app.dev/docs/adding-custom-environment-variables/) called `REACT_APP_GA_CODE` storing your [GA Tracking ID](https://support.google.com/analytics/answer/7372977).
-
-## Credits
-
-- [Nucleo](https://nucleoapp.com/)
-- [Unsplash](https://unsplash.com/)
-
-## Terms and License
-
-- Released under the [GPL](https://www.gnu.org/licenses/gpl-3.0.html).
-- Copyright 2020 [Cruip](https://cruip.com/).
-- Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
-- Attribution is not required, although it is really appreciated.
-
-## About Us
-
-We're an Italian developer/designer duo creating high-quality design/code resources for developers, makers, and startups.
-
-## Stay in the loop
-
-If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe). -->
+To add molecules:
+1. Download its pdb, name it to `your-molecule.pdb`, and put it under `public/pdb` (i.e. as `public/pdb/your-molecule.pdb`)
+2. Calculate its persistent homology with `python src/python/ph.py public/pdb/your-molecule.pdb public/homologies/your-molecule.json`
+3. Add the name of your molecule to the `molecules` array in PHCanvas.js.

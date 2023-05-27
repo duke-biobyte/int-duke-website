@@ -242,14 +242,14 @@ const PHCanvas = () => {
 
   // load pdb file
   const [atoms, setAtoms] = useState([])
+  const molecules = ["caffeine", "ethanol", "glucose", "adenine", "cytosine", "thymine", "guanine"]
+
+  const choices = {}
+  molecules.map((m) => choices[m] = m)
 
   const { molecule } = useControls({
     molecule: {value: "caffeine",
-    options: {
-      "caffeine": "caffeine",
-      "ethanol": "ethanol",
-      "glucose": "glucose"
-    },
+    options: choices,
   }},
   {
     "order": 99,
@@ -258,18 +258,11 @@ const PHCanvas = () => {
 
   const loader = new PDBLoader()
 
-  const pdb_file_map = {
-      // "1fsd":  "/pdb/1fsd.pdb",
-      "caffeine":  "/pdb/caffeine.pdb",
-      "ethanol":  "/pdb/ethanol.pdb",
-      "glucose":  "/pdb/glucose.pdb",
-  }
+  const pdb_file_map = {}
+  molecules.map((m) => pdb_file_map[m] = "/pdb/" + m + ".pdb")
 
-  const homology_file_map = {
-      "caffeine":  "/homologies/caffeine.json",
-      "ethanol":  "/homologies/ethanol.json",
-      "glucose":  "/homologies/glucose.json",
-  }
+  const homology_file_map = {}
+  molecules.map((m) => homology_file_map[m] = "/homologies/" + m + ".json")
 
   useEffect(() => {
     if (molecule) {
