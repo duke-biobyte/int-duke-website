@@ -53,8 +53,7 @@ const GradientMaterial = () => {
   )
 }
 
-
-const BallMesh = ({position, scale, color, ...props}) => {
+const BallMesh = ({position, scale, color, backgroundless, ...props}) => {
   const color_to_string = (color) => {
     return `rgb(${color[0]}, ${color[1]}, ${color[2]})`
   }
@@ -72,14 +71,22 @@ const BallMesh = ({position, scale, color, ...props}) => {
   }
   )
 
-  return (
-    <mesh castShadow position={position} {...props}>
-      <sphereGeometry args={[scale, x_segments, y_segments]} />
-      {/* <meshStandardMaterial metalness={1} color={'rgb(255, 0, 0)'}/> */}
-      <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
-      {/* <ambientLight intensity={0.5} /> */}
-    </mesh>
-  )
+  if (backgroundless === true) {
+    return (
+      <mesh castShadow position={position} {...props}>
+        <sphereGeometry args={[scale, x_segments, y_segments]} />
+        <meshBasicMaterial color={color_to_string(color)}/>
+        <directionalLight position={[0, 0, 10]} intensity={0.5} />
+      </mesh>
+    )}
+    else {
+      return (
+        <mesh castShadow position={position} {...props}>
+          <sphereGeometry args={[scale, x_segments, y_segments]} />
+          <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
+        </mesh>
+      )
+    }
 }
 
 function PHPlot(props) {
@@ -132,6 +139,9 @@ const FiltrationVisualization = (props) => {
   const atoms = props.atoms
   const coordinates = atoms.map((a) => [a[0], a[1], a[2]])
   const filtration_parameter = props.filtration_parameter
+  FiltrationVisualization.defaultProps = {
+    lineWidth: 0.03
+  }
 
   const combinations = (arr) => {
     var result = []
@@ -163,7 +173,7 @@ const FiltrationVisualization = (props) => {
             return (
               <mesh>
                   <meshLineGeometry points={e.line} />
-                  <meshLineMaterial lineWidth={0.03} color="hotpink" />
+                  <meshLineMaterial lineWidth={props.lineWidth} color="hotpink" />
               </mesh>
             )
           } else { return null }
@@ -187,21 +197,19 @@ const getCenter = (atoms) => {
 }
 
 
-const MoleculeMesh = (props) => {
+const MoleculeMesh = ({atoms, scale, ...props}) => {
   const { fix_ball_scale } = useControls({
     fix_ball_scale: {
       value: false
     }
   })
 
-  const atoms = props.atoms
-
-  var scale
+  var ball_scale
 
   if (!fix_ball_scale) {
-    scale = props.scale
+    ball_scale = scale
   } else {
-    scale = 0.1
+    ball_scale = 0.1
   }
 
   const center = getCenter(atoms)
@@ -211,7 +219,7 @@ const MoleculeMesh = (props) => {
       <group position={center}>
         {
           atoms.map((atom, idx) => (
-            <BallMesh position={[atom[0], atom[1], atom[2]]} scale={scale} color={atom[3]} />
+            <BallMesh position={[atom[0], atom[1], atom[2]]} scale={ball_scale} color={atom[3]} {...props}/>
           ))
         }
       </group>
@@ -221,8 +229,6 @@ const MoleculeMesh = (props) => {
 }
 
 const PHCanvas = () => {
-  const [atoms, setAtoms] = useState([])
-
   // Leva controls
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
@@ -233,6 +239,9 @@ const PHCanvas = () => {
     "order": 98,
     "collapsed": true
   })
+
+  // load pdb file
+  const [atoms, setAtoms] = useState([])
 
   const { pdb_file } = useControls({
     pdb_file: {value: "/pdb/caffeine.pdb",
@@ -259,6 +268,7 @@ const PHCanvas = () => {
     }
   }, [pdb_file])
 
+  // load homology data
   const [PHData, setPHData] = useState([]);
 
   useEffect(() => {
@@ -335,4 +345,4 @@ const PHCanvas = () => {
 }
 
 export default PHCanvas;
-export { MoleculeMesh, BallMesh };
+export { MoleculeMesh, BallMesh, FiltrationVisualization };
