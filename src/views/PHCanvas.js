@@ -243,13 +243,12 @@ const PHCanvas = () => {
   // load pdb file
   const [atoms, setAtoms] = useState([])
 
-  const { pdb_file } = useControls({
-    pdb_file: {value: "/pdb/caffeine.pdb",
+  const { molecule } = useControls({
+    molecule: {value: "caffeine",
     options: {
-      // "1fsd":  "/pdb/1fsd.pdb",
-      "Caffeine":  "/pdb/caffeine.pdb",
-      "Ethanol":  "/pdb/ethanol.pdb",
-      "Glucose":  "/pdb/glucose.pdb",
+      "caffeine": "caffeine",
+      "ethanol": "ethanol",
+      "glucose": "glucose"
     },
   }},
   {
@@ -259,25 +258,36 @@ const PHCanvas = () => {
 
   const loader = new PDBLoader()
 
+  const pdb_file_map = {
+      // "1fsd":  "/pdb/1fsd.pdb",
+      "caffeine":  "/pdb/caffeine.pdb",
+      "ethanol":  "/pdb/ethanol.pdb",
+      "glucose":  "/pdb/glucose.pdb",
+  }
+
+  const homology_file_map = {
+      "caffeine":  "/homologies/caffeine.json",
+      "ethanol":  "/homologies/ethanol.json",
+      "glucose":  "/homologies/glucose.json",
+  }
+
   useEffect(() => {
-    if (pdb_file) {
-      loader.load(pdb_file, (pdb) => {
+    if (molecule) {
+      loader.load(pdb_file_map[molecule], (pdb) => {
         const atoms = pdb.json.atoms
         setAtoms(atoms)
       })
-    }
-  }, [pdb_file])
 
-  // load homology data
-  const [PHData, setPHData] = useState([]);
-
-  useEffect(() => {
-    fetch('/homologies/caf-cech.json')
+    fetch(homology_file_map[molecule])
       .then(response => response.json())
       .then(jsonData => {
         setPHData(jsonData);
       });
-  }, []); // Empty array as dependency means this effect will only run once, similar to componentDidMount
+    }
+  }, [molecule])
+
+  // load homology data
+  const [PHData, setPHData] = useState([]);
 
   const { preset, blur } = useControls("Debug Controls", {
     preset: {

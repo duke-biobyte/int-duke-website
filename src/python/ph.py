@@ -5,28 +5,30 @@ import typer
 from gtda.homology import VietorisRipsPersistence, EuclideanCechPersistence
 import numpy as np
 from pathlib import Path
-from Bio.PDB import PDBParser
+from biopandas.pdb import PandasPdb
 import json
 
 app = typer.Typer()
-pdbparser = PDBParser()
+ppdb = PandasPdb()
 
 # Calculate the persistent homology of a given PDB file
 # Exports into a json file
 @app.command()
 def calculate_persistence_homology(pdb_file: Path, output_file: Path):
-    # Load the PDB file
-    structure = pdbparser.get_structure("pdb", pdb_file)
+    df = ppdb.read_pdb(str(pdb_file))
 
     # Extract the coordinates of the atoms
     coordinates = []
-    for atom in structure.get_atoms():
-        coordinates.append(atom.get_coord())
+    for atom in df.df['ATOM'].iterrows():
+        coordinates.append(atom[1][['x_coord', 'y_coord', 'z_coord']].values)
+
+    for atom in df.df['HETATM'].iterrows():
+        coordinates.append(atom[1][['x_coord', 'y_coord', 'z_coord']].values)
 
     coordinates = np.array(coordinates)
 
     # Calculate the persistent homology
-    vr = EuclideanCechPersistence(homology_dimensions=[0, 1, 2])
+    vr = VietorisRipsPersistence(homology_dimensions=[0, 1, 2])
     diagram = vr.fit_transform(coordinates[None, :, :])[0]
     diagram = diagram.tolist()
 
