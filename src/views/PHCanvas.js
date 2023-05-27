@@ -83,7 +83,7 @@ const BallMesh = ({position, scale, color, backgroundless, ...props}) => {
       return (
         <mesh castShadow position={position} {...props}>
           <sphereGeometry args={[scale, x_segments, y_segments]} />
-          <meshPhysicalMaterial roughness={0.2} transmission={1} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
+          <meshPhysicalMaterial roughness={0.2} transmission={0.75} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
         </mesh>
       )
     }
@@ -100,7 +100,7 @@ function PHPlot(props) {
   return (
     <Fragment>
       <RVStyles />
-      <FlexibleXYPlot>
+      <FlexibleXYPlot xDomain={[0, 5]}>
         <LineSeries data={data} />
         {
           betti_0.map((d) => {
@@ -242,7 +242,7 @@ const PHCanvas = () => {
 
   // load pdb file
   const [atoms, setAtoms] = useState([])
-  const molecules = ["caffeine", "ethanol", "glucose", "adenine", "cytosine", "thymine", "guanine"]
+  const molecules = ["caffeine", "ethanol", "cholesterol", "fructose", "glucose", "adenine", "cytosine", "thymine", "guanine", "rapamycin", "1fsv", "1aa5", "1b9p"]
 
   const choices = {}
   molecules.map((m) => choices[m] = m)
@@ -298,6 +298,12 @@ const PHCanvas = () => {
     }
   })
 
+  const { low_quality_materials } = useControls({
+    low_quality_materials: {
+      value: false
+    }
+  })
+
   const decimal_to_percentage = (decimal) => ((decimal * 100).toString() + "%")
 
   return (
@@ -320,7 +326,7 @@ const PHCanvas = () => {
             show_performance && <Perf position="bottom-left" />
           }
 
-          <MoleculeMesh atoms={atoms} scale={scale} />
+          <MoleculeMesh atoms={atoms} scale={scale} backgroundless={low_quality_materials} />
           <OrbitControls />
 
           {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
