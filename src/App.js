@@ -43,7 +43,7 @@ const App = () => {
         <Switch>
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
-          <AppRoute exact path="/ph" component={PHCanvas} />
+          <AppRoute exact path="/ph" component={PHCanvas} layout={AltLayout} />
         </Switch>
       )} />
   );

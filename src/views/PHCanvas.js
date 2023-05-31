@@ -5,22 +5,27 @@ import React, { useRef, useState, Fragment, useEffect } from 'react';
 // Three.js related imports
 import * as THREE from 'three';
 import { PDBLoader } from 'three-stdlib';
-import { OrbitControls,  Environment, Line  } from '@react-three/drei';
+import { OrbitControls,  Environment, Line, Center  } from '@react-three/drei';
 import { Canvas, useFrame, extend } from '@react-three/fiber';
 import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline';
-import { useControls, folder } from 'leva';
+import { Leva, useControls, folder } from 'leva';
 import { LayerMaterial, Depth, Fresnel } from 'lamina'
 
 // React related imports
 import SEO from 'react-seo-component';
 import { Perf } from 'r3f-perf'
 import Draggable from 'react-draggable';
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import scrollUpIcon from '../assets/images/icons/noun-scroll-up-607573-optimized.svg'
 
 // react-vis related imports
 import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair, DiscreteColorLegend } from 'react-vis';
 import RVStyles from 'react-vis-styles';
 import '../components/novelties/react-vis/HideTooltip.css';
 
+// keep explanation page in a separate file
+import PHExplanation from '../components/sections/PHExplanation';
 
 extend({ MeshLineGeometry, MeshLineMaterial })
 
@@ -233,7 +238,7 @@ const PHCanvas = () => {
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
   const { show_performance } = useControls("Debug Controls", {
-    show_performance: {value: true}
+    show_performance: {value: false}
   },
   {
     "order": 98,
@@ -309,46 +314,65 @@ const PHCanvas = () => {
   return (
     <>
       <SEO
-        title="Persistent Homology"
-        titleTemplate="InT@Duke"
-        titleSeparator=' - '
+        title="Interactive Persistent Homology on Molecules"
+        titleTemplate=""
+        titleSeparator=""
         description=''
         image='../assets/images/splash-image.png'
         siteLanguage='en'
         siteLocale='en_US'
       />
 
-      <div style={{width:"100%", height: "100%", position: "fixed", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
+
+      <div style={{width:"100%", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
+        <Element name='introductionPage'>
+          <PHExplanation />
+
+          <center>TODO: Finish the explanation on persistent homology</center>
+          <center>Want to talk about:
+            <ol>
+              <li>What is a simplex?</li>
+              <li>What is a filtration?</li>
+              <li>What is simplicial homology?</li>
+              <li>What is a barcode?</li>
+              <li>What is a persistence diagram?</li>
+            </ol>
+          </center>
+
+        </Element>
+      </div>
+
+      <div style={{ position: 'relative', width: '100%', height: '100vh', top: '0', left: '0', zIndex: '0', overflow: 'hidden' }}>
 
         <Canvas>
-
-          {
-            show_performance && <Perf position="bottom-left" />
-          }
-
-          <MoleculeMesh atoms={atoms} scale={scale} backgroundless={low_quality_materials} />
-          <OrbitControls />
-
-          {/* The lights aren't even necessary if we use MeshMatcapMaterial */}
-          <Environment preset={preset} background blur={blur}/>
-
-          {/* Edges of the simplicial complexes */}
-          <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
-
+            {
+                show_performance && <Perf position="bottom-left" />
+            }
+            <MoleculeMesh atoms={atoms} scale={scale} backgroundless={low_quality_materials} />
+            <OrbitControls />
+            <Environment preset={preset} background blur={blur}/>
+            <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
         </Canvas>
-
         <Draggable>
-          {/* The persistence barcode */}
-          <div style={{width: decimal_to_percentage(barcode_width), aspectRatio: "16/9", position: "fixed", top: "0", left: "0", zIndex: "1", overflow: "hidden", borderRadius: "10px", 
-          // border: "3px solid rgba(0, 0, 255, .5)"
-        }}>
-            <center>Persistence Barcode</center>
-            <PHPlot data={PHData} scale={scale} />
-          </div>
+            <div style={{ position: 'absolute', width: decimal_to_percentage(barcode_width), aspectRatio: '16/9', top: '0', left: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
+                <center>Persistence Barcode</center>
+                <PHPlot data={PHData} scale={scale} />
+            </div>
         </Draggable>
 
+        {/* A button on the bottom right that scrolls to introductionPage */}
+        {/* Using the scroll icon src/assets/images/icons/noun-scroll-up-607573-optimized.svg */}
+        <div style={{ position: 'absolute', width: '10%', aspectRatio: '1/1', bottom: '0', right: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
+          <center>Return to the Explanation</center>
+          <img src={scrollUpIcon} style={{cursor: 'pointer'}} onClick={() => scroller.scrollTo('introductionPage', {
+            duration: 800,
+            delay: 0,
+            smooth: 'easeInOutQuart'
+          })} />
+        </div>
 
       </div>
+
     </>
   );
 }
