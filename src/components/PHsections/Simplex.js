@@ -127,7 +127,7 @@ const Simplex = ({
               </div>
               <div>
                 <Image
-                  src={require('./../../assets/images/PH/simplices.png')}
+                  src={require('./../../assets/images/PH/rips_example.gif')}
                   alt="Features split 01"
                   width={528}
                   height={396}/>

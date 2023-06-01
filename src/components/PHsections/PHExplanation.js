@@ -4,6 +4,7 @@ import { SectionProps } from '../../utils/SectionProps';
 import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 import Simplex from './Simplex';
+import Image from '../elements/Image';
 
 const propTypes = {
   ...SectionProps.types
@@ -64,6 +65,11 @@ const PHHero = ({
                 A method involving <span className='text-color-primary'>algebraic topology</span> that <em>"beat the pants off"</em> other methods in <a href="https://link.springer.com/article/10.1007/s10822-018-0180-4"><span className='text-color-primary'>D3R grand challenge 3</span></a> on protein-ligand binding affinity prediction.
               </p>
             </div>
+            <Image
+                  src={require('./../../assets/images/PH/41598_2020_66710_Fig1_HTML.png')}
+                  alt="Image source: Anand, D.V., Meng, Z., Xia, K. et al. Weighted persistent homology for osmolyte molecular aggregation and hydrogen-bonding network analysis. Sci Rep 10, 9685 (2020). https://doi.org/10.1038/s41598-020-66710-6"
+                  />
+
           </div>
 
         </div>
