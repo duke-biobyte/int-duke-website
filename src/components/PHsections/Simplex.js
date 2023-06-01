@@ -69,7 +69,7 @@ const Simplex = ({
                   Simplex
                 </h2>
                 <MathJax>
-                <p>A simplex is a simple polytope of any dimension. In lower dimensions:</p>
+                <p>A <b>simplex</b> is a simple polytope of any dimension. In lower dimensions:</p>
                 <ul>
                   <li>0-simplex is a point</li>
                   <li>1-simplex is a line segment</li>
@@ -89,29 +89,27 @@ const Simplex = ({
             </div>
 
             <div className="split-item">
-
               <div className={
                 classNames(
                   'split-item-image center-content-mobile reveal-from-bottom',
                   imageFill && 'split-item-image-fill'
                 )}
                 data-reveal-container=".split-item">
-                  <div style={{aspectRatio: "1.5"}}>
-
+                  <div>
+                    <Image src={require('./../../assets/images/PH/simplicial_complex_example.png')} alt="Example of a simplicial complex"  />
                   </div>
-
               </div>
-
               <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
                 <h2 className="mt-0 mb-12">
                   Simplicial Complex
                   </h2>
                 <MathJax>
-                  <p>A simplicial complex is a collection of simplices that satisfies the following conditions:</p>
+                  <p>A <b>simplicial complex</b> is a collection of <b>simplices</b> that satisfies the following conditions:</p>
                   <ul>
                     <li>Any face of a simplex in the complex is also in the complex</li>
                     <li>The intersection of any two simplices in the complex is a face of both</li>
                   </ul>
+                  <p>For the sake of this introduction, just consider a simplicial complex to be the "gluing together" of a few simplices.</p>
                 </MathJax>
               </div>
             </div>
@@ -122,15 +120,75 @@ const Simplex = ({
                   Vietoris-Rips Persistence
                 </h2>
                 <MathJax>
-                  The Vietoris-Rips complex is a simplicial complex constructed from a set of points in a metric space. The complex is constructed by connecting points that are within a certain distance of each other. The distance is called the threshold parameter.
-                </MathJax>
+                  The <b>Vietoris-Rips complex</b> is a <b>simplicial complex</b> constructed from a set of points in a metric space, such as the usual 3D Euclidean space. The complex is constructed by connecting points that are within a <em>threshold parameter</em> of distance within each other.
+                  </MathJax>
               </div>
               <div>
                 <Image
                   src={require('./../../assets/images/PH/rips_example.gif')}
-                  alt="Features split 01"
+                  alt="Source: https://comptag.github.io/rpackage_tutorials/2019/07/tda-rips-tutorial.html"
                   width={528}
                   height={396}/>
+              </div>
+            </div>
+
+            <div className="split-item">
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                  <div>
+                    <Image src={require('./../../assets/images/PH/ripsfilt.png')} alt="Filtration with the Vietoris-Rips complex"  />
+                  </div>
+              </div>
+              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
+                <h2 className="mt-0 mb-12">
+                  Filtration
+                  </h2>
+                <MathJax>
+                  <p>A <b>filtration</b> is a sequence of simplicial complexes, where each complex is a subset of the next. In the context of <b>Vietoris-Rips complexes</b>, this means that the <em>threshold parameter</em> is increasing.</p>
+                </MathJax>
+              </div>
+            </div>
+
+            <div className="split-item">
+              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
+                <h2 className="mt-0 mb-12 pb-12">
+                  Betti Numbers
+                </h2>
+                <MathJax>
+                  <p>The <b>Betti numbers</b> of a simplicial complex are a sequence of integers that describe the topology of the complex. Specifically, the <em>n-th Betti number</em> specifies the <em>number of n-dimensional holes</em>. The <b>0th Betti number</b> is the number of connected components, the <b>1st Betti number</b> is the number of holes, and the <b>2nd Betti number</b> is the number of voids.</p>
+                </MathJax>
+              </div>
+              <div>
+                <Image
+                  src={require('./../../assets/images/PH/betti-number-example.png')}
+                  alt="https://www.researchgate.net/publication/354944272_Persistent_homology_and_the_shape_of_evolutionary_games"
+                  width={528}
+                  height={396}/>
+              </div>
+            </div>
+
+            <div className="split-item">
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                  <div>
+                    <Image src={require('./../../assets/images/PH/ripsfilt.png')} alt="Filtration with the Vietoris-Rips complex"  />
+                  </div>
+              </div>
+              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
+                <h2 className="mt-0 mb-12">
+                  Persistence Diagram
+                  </h2>
+                <MathJax>
+                  <p>A <b>persistence diagram</b> is a plot of the <b>Betti numbers</b> of a simplicial complex over the <b>filtration</b>. The x-axis is the <em>threshold parameter</em> and the <em>y-axis</em> is the <em>Betti number</em>. The <b>persistence</b> of a <em>hole</em> is the <em>length</em> of time that the <em>hole</em> exists.</p>
+                </MathJax>
               </div>
             </div>
 

@@ -38,8 +38,23 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
+  const mathJaxConfig = {
+    loader: { load: ["[tex]/html"] },
+    tex: {
+      packages: { "[+]": ["html"] },
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"]
+      ]
+    }
+  };
+
   return (
-    <MathJaxContext>
+    <MathJaxContext version={3} config={mathJaxConfig}>
     <ScrollReveal
       ref={childRef}
       children={() => (

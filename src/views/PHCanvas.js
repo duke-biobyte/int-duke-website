@@ -331,12 +331,11 @@ const PHCanvas = () => {
           <center>TODO: Finish the explanation on persistent homology</center>
           <center>Want to talk about:
             <ol>
-              <li>What is a simplex?</li>
-              <li>What is simplicial complex and simplicial homology?</li>
               <li>What is a filtration?</li>
               <li>What is a barcode?</li>
               <li>What is a persistence diagram?</li>
             </ol>
+            Finally, gather all the sources
           </center>
 
         </Element>
