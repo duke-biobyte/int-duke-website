@@ -6,6 +6,8 @@ import ReactGA from 'react-ga';
 import ReactDOM from 'react-dom'
 import { Canvas } from '@react-three/fiber'
 import PHCanvas from './views/PHCanvas';
+import { MathJaxContext } from 'better-react-mathjax';
+
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
@@ -37,6 +39,7 @@ const App = () => {
   }, [location]);
 
   return (
+    <MathJaxContext>
     <ScrollReveal
       ref={childRef}
       children={() => (
@@ -46,6 +49,7 @@ const App = () => {
           <AppRoute exact path="/ph" component={PHCanvas} layout={AltLayout} />
         </Switch>
       )} />
+    </MathJaxContext>
   );
 }
 

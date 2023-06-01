@@ -25,7 +25,7 @@ import RVStyles from 'react-vis-styles';
 import '../components/novelties/react-vis/HideTooltip.css';
 
 // keep explanation page in a separate file
-import PHExplanation from '../components/sections/PHExplanation';
+import PHExplanation from '../components/PHsections/PHExplanation';
 
 extend({ MeshLineGeometry, MeshLineMaterial })
 
@@ -332,8 +332,8 @@ const PHCanvas = () => {
           <center>Want to talk about:
             <ol>
               <li>What is a simplex?</li>
+              <li>What is simplicial complex and simplicial homology?</li>
               <li>What is a filtration?</li>
-              <li>What is simplicial homology?</li>
               <li>What is a barcode?</li>
               <li>What is a persistence diagram?</li>
             </ol>

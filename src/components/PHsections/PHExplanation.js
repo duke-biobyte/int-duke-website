@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
 import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
+import Simplex from './Simplex';
 
 const propTypes = {
   ...SectionProps.types
@@ -12,7 +13,7 @@ const defaultProps = {
   ...SectionProps.defaults
 }
 
-const PHExplanation = ({
+const PHHero = ({
   className,
   topOuterDivider,
   bottomOuterDivider,
@@ -40,6 +41,7 @@ const PHExplanation = ({
   );
 
   return (
+    <>
     <section
       {...props}
       className={outerClasses}
@@ -58,19 +60,32 @@ const PHExplanation = ({
                 Persistent Homology
             </h1>
             <div className="container-xs">
-              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                A <span className="text-color-primary">powerful</span> method in binding affinity prediction, yet <span className="text-color-primary">intimidating</span> to understand.
-                </p>
+              <p>
+                A method involving <span className='text-color-primary'>algebraic topology</span> that <em>"beat the pants off"</em> other methods in <a href="https://link.springer.com/article/10.1007/s10822-018-0180-4"><span className='text-color-primary'>D3R grand challenge 3</span></a> on protein-ligand binding affinity prediction.
+              </p>
             </div>
           </div>
 
         </div>
       </div>
     </section>
+
+    </>
   );
 }
 
-PHExplanation.propTypes = propTypes;
-PHExplanation.defaultProps = defaultProps;
+const PHExplanation = () => {
+
+  return (
+    <>
+      <PHHero className="illustration-section-01" />
+      <Simplex />
+    </>
+  )
+
+}
+
+PHHero.propTypes = propTypes;
+PHHero.defaultProps = defaultProps;
 
 export default PHExplanation;
