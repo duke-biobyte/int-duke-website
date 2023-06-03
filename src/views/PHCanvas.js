@@ -332,11 +332,11 @@ const PHCanvas = () => {
       <div style={{width:"100%", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
         <Element name='introductionPage'>
           <PHExplanation />
-          <center><span onClick={() => scroller.scrollTo('canvas', {smooth: true, offset: -100})} style={{margin: "10px", zIndex: "1"}} style={{color: "red"}}>
+          {/* <center><span onClick={() => scroller.scrollTo('canvas', {smooth: true, offset: -100})} style={{margin: "10px", zIndex: "1"}} style={{color: "red"}}>
             <p>Click here to go down to canvas</p>
             <p>(maybe use this? or just let the user scroll down?)</p>
             <p>We also need to address previous works on our poster.</p>
-            </span></center>
+            </span></center> */}
         </Element>
       </div>
 
@@ -347,7 +347,7 @@ const PHCanvas = () => {
             {
                 show_performance && <Perf position="bottom-left" />
             }
-            <MoleculeMesh atoms={atoms} scale={scale} backgroundless={low_quality_materials} />
+            <MoleculeMesh atoms={atoms} scale={scale / 2} backgroundless={low_quality_materials} />
             <OrbitControls />
             <Environment preset={preset} background blur={blur}/>
             <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
