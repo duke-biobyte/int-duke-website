@@ -18,6 +18,8 @@ import Draggable from 'react-draggable';
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import scrollUpIcon from '../assets/images/icons/noun-scroll-up-607573-optimized.svg'
+import { useInView } from '@react-spring/three';
+import { FullPage, Slide } from 'react-full-page/lib';
 
 // react-vis related imports
 import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair, DiscreteColorLegend } from 'react-vis';
@@ -234,6 +236,9 @@ const MoleculeMesh = ({atoms, scale, ...props}) => {
 }
 
 const PHCanvas = () => {
+  // Only show leva when canvas is in view
+  const [canvasRef, canvasInView] = useInView()
+
   // Leva controls
   const { scale } = useControls({ scale: { value: 0.1, min: 0, max: 5 } })
 
@@ -327,23 +332,18 @@ const PHCanvas = () => {
       <div style={{width:"100%", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
         <Element name='introductionPage'>
           <PHExplanation />
-
-          <center>TODO: Finish the explanation on persistent homology</center>
-          <center>Want to talk about:
-            <ol>
-              <li>What is a filtration?</li>
-              <li>What is a barcode?</li>
-              <li>What is a persistence diagram?</li>
-            </ol>
-            Finally, gather all the sources
-          </center>
-
+          <center><span onClick={() => scroller.scrollTo('canvas', {smooth: true, offset: -100})} style={{margin: "10px", zIndex: "1"}} style={{color: "red"}}>
+            <p>Click here to go down to canvas</p>
+            <p>(maybe use this? or just let the user scroll down?)</p>
+            <p>We also need to address previous works on our poster.</p>
+            </span></center>
         </Element>
       </div>
 
       <div style={{ position: 'relative', width: '100%', height: '100vh', top: '0', left: '0', zIndex: '0', overflow: 'hidden' }}>
+        <Leva hidden={!canvasInView} />
 
-        <Canvas>
+        <Canvas ref={canvasRef}>
             {
                 show_performance && <Perf position="bottom-left" />
             }
@@ -371,7 +371,6 @@ const PHCanvas = () => {
         </div>
 
       </div>
-
     </>
   );
 }

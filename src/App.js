@@ -3,11 +3,8 @@ import { useLocation, Switch } from 'react-router-dom';
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
-import ReactDOM from 'react-dom'
-import { Canvas } from '@react-three/fiber'
 import PHCanvas from './views/PHCanvas';
 import { MathJaxContext } from 'better-react-mathjax';
-
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';

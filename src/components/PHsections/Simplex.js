@@ -110,6 +110,7 @@ const Simplex = ({
                     <li>The intersection of any two simplices in the complex is a face of both</li>
                   </ul>
                   <p>For the sake of this introduction, just consider a simplicial complex to be the "gluing together" of a few simplices.</p>
+                  <i>We will construct simplicial complexes in a fixed way, so you don't need to remember these properties of simplicial complex.</i>
                 </MathJax>
               </div>
             </div>
@@ -117,10 +118,10 @@ const Simplex = ({
             <div className="split-item">
               <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
                 <h2 className="mt-0 mb-12 pb-12">
-                  Vietoris-Rips Persistence
+                  Vietoris-Rips Complex
                 </h2>
                 <MathJax>
-                  The <b>Vietoris-Rips complex</b> is a <b>simplicial complex</b> constructed from a set of points in a metric space, such as the usual 3D Euclidean space. The complex is constructed by connecting points that are within a <em>threshold parameter</em> of distance within each other.
+                  The <b>Vietoris-Rips complex</b> is a <b>simplicial complex</b> constructed from a set of points in a metric space, such as the usual 3D Euclidean space. The complex is constructed by connecting points that are within a <b>threshold parameter</b> of distance within each other.
                   </MathJax>
               </div>
               <div>
@@ -148,7 +149,7 @@ const Simplex = ({
                   Filtration
                   </h2>
                 <MathJax>
-                  <p>A <b>filtration</b> is a sequence of simplicial complexes, where each complex is a subset of the next. In the context of <b>Vietoris-Rips complexes</b>, this means that the <em>threshold parameter</em> is increasing.</p>
+                  <p>A <b>filtration</b> is a sequence of simplicial complexes, where each complex is a subset of the next. In the context of <b>Vietoris-Rips complexes</b>, a <b>filtration</b> is created as the <b>threshold parameter</b> increases from 0 to \(\infty\).</p>
                 </MathJax>
               </div>
             </div>
@@ -164,10 +165,12 @@ const Simplex = ({
               </div>
               <div>
                 <Image
-                  src={require('./../../assets/images/PH/betti-number-example.png')}
-                  alt="https://www.researchgate.net/publication/354944272_Persistent_homology_and_the_shape_of_evolutionary_games"
-                  width={528}
-                  height={396}/>
+                  // src={require('./../../assets/images/PH/betti-number-example.png')}
+                  // alt="https://www.researchgate.net/publication/354944272_Persistent_homology_and_the_shape_of_evolutionary_games"
+                  src={require('./../../assets/images/PH/betti-number-simplices.png')}
+                  alt="Adapted from https://www.nature.com/articles/s41598-020-66710-6"
+                  width={200}
+                  />
               </div>
             </div>
 
@@ -179,17 +182,28 @@ const Simplex = ({
                 )}
                 data-reveal-container=".split-item">
                   <div>
-                    <Image src={require('./../../assets/images/PH/ripsfilt.png')} alt="Filtration with the Vietoris-Rips complex"  />
+                    <Image src={require('./../../assets/images/PH/persistence.png')} alt="Filtration with the Vietoris-Rips complex. Source: https://github.com/GUDHI/TDA-tutorial/blob/master/Tuto-GUDHI-persistence-diagrams.ipynb"  />
                   </div>
               </div>
               <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
                 <h2 className="mt-0 mb-12">
-                  Persistence Diagram
+                  Persistence Barcode
                   </h2>
                 <MathJax>
-                  <p>A <b>persistence diagram</b> is a plot of the <b>Betti numbers</b> of a simplicial complex over the <b>filtration</b>. The x-axis is the <em>threshold parameter</em> and the <em>y-axis</em> is the <em>Betti number</em>. The <b>persistence</b> of a <em>hole</em> is the <em>length</em> of time that the <em>hole</em> exists.</p>
+                  <p>A <b>persistence barcode</b> is a plot of the <b>Betti numbers</b> of a <b>simplicial complex</b> over the <b>filtration</b>. The x-axis is the <b>threshold parameter</b> and the color is the <b>Betti number</b>. The number of lines of a certain color at a <b>threshold parameter</b> indicates the number of <b>holes</b> of that dimension at that <b>threshold parameter</b>.</p>
+
+                  <b><span className="text-color-primary"><p>As simple as these barcodes look, they contain suitable information from biomolecules such that an algorithm by <i>Nguyen et al. (2018)</i> were able to predict binding affinity just on these barcodes.</p></span></b>
                 </MathJax>
               </div>
+            </div>
+
+            <div className='container-sm'>
+              <h3 className='pt-32'>References and credits</h3>
+              <p>The source of each image is in its alt attribute. Papers referenced is <i>Nguyen et al. (2018), doi: 10.1007/s10822-018-0146-6</i></p>
+            </div>
+
+            <div className='container-sm'>
+              <h3 className='pt-32'>Scroll down to see an interactive demonstration of persistent homology, in light of biomolecules.</h3>
             </div>
 
           </div>

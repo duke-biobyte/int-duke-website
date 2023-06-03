@@ -66,4 +66,4 @@ To add molecules:
 
 ### Todo (?? Discuss with Holly first)
 
-Pairwise opposition homology
+Safari somehow unrenders components after a while

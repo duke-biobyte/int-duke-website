@@ -53,8 +53,8 @@ const PHHero = ({
 
           <div className="hero-content">
             <div className="container-xs">
-              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                An <span className="text-color-primary">interactive introduction</span> to the field of
+              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="100">
+                An <span className="text-color-primary">interactive introduction</span> to
                 </p>
             </div>
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
@@ -62,16 +62,18 @@ const PHHero = ({
             </h1>
             <div className="container-xs reveal-from-bottom" data-reveal-delay="400">
               <p>
-                A novel <span className='text-color-primary'>algebraic topology</span> method that <em>obliterated</em> other methods in <a href="https://link.springer.com/article/10.1007/s10822-018-0180-4"><span className='text-color-primary'>D3R grand challenge 3</span></a> on protein-ligand binding affinity prediction.
+                A novel <span className='text-color-primary'>algebraic topology</span> approach that <em>obliterated</em> other methods in <a href="https://link.springer.com/article/10.1007/s10822-018-0180-4"><span className='text-color-primary'>D3R grand challenge 3</span></a> on protein-ligand binding affinity prediction.
               </p>
-              <div className='p-16'>
+
+            </div>
+            <div className='container-sm reveal-from-bottom' data-reveal-delay="400">
+              <div className='p-16 container-xs'>
                 <p>
                 <Image src={require('../../assets/images/PH/gww-performance.png')} alt="Source: Nguyen, D.D., Cang, Z., Wu, K. et al. Mathematical deep learning for pose and binding affinity prediction and ranking in D3R Grand Challenges. J Comput Aided Mol Des 33, 71–82 (2019). https://doi.org/10.1007/s10822-018-0146-6" />
                 </p>
                 <p className='text-xs'>Performance comparison of different submissions on affinity ranking of 19 ligands having crystallographic poses in stage 2 of subchallenge 1 of D3R GC3. The <b>persistent homology</b> algorithm by <em>Nguyen et al. (2018)</em> is shown in <span style={{color: "red"}}>red</span>.</p>
               </div>
               {/* <Image src={require('./../../assets/images/PH/41598_2020_66710_Fig1_HTML.png')} alt="Image source: Anand, D.V., Meng, Z., Xia, K. et al. Weighted persistent homology for osmolyte molecular aggregation and hydrogen-bonding network analysis. Sci Rep 10, 9685 (2020). https://doi.org/10.1038/s41598-020-66710-6" /> */}
-
             </div>
           </div>
 
