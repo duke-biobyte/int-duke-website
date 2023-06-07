@@ -13,6 +13,7 @@ import { LayerMaterial, Depth, Fresnel } from 'lamina'
 
 import { BallMesh, MoleculeMesh, FiltrationVisualization } from '../../views/PHCanvas';
 import { useSpring, animated } from '@react-spring/three'
+import AltPageBackground from '../novelties/AltPageBackground';
 
 
 const AnimatedBallMesh = animated(BallMesh)
@@ -76,6 +77,9 @@ const AltPage = () => {
         }
     }, [pdb_file])
 
+    // Idea for background:
+    // Make a solid color background that changes color as the mouse hovers over it
+
     return (
         <>
 
@@ -93,14 +97,13 @@ const AltPage = () => {
 
             <div style={{width:"100%", height: "100%", position: "absolute", top: "0", left: "0", overflow: "hidden"}}>
 
-                <div style={{width:"33%", height: "33%", position: "absolute", bottom: "0", left: "0", overflow: "hidden"}}>
+                <AltPageBackground />
+
+                {/* <div style={{width:"33%", height: "33%", position: "absolute", bottom: "0", left: "0", overflow: "hidden"}}>
                     <Canvas>
                         <AnimatedMoleculeMesh atoms={atoms} scale={0.3} />
-
                         <AnimatedFiltrationVisualization atoms={atoms} filtration_parameter={springs.scale} lineWidth={0.1} />
-
                         <OrbitControls />
-
                         <Environment preset={'city'} background blur={0.9}/>
                     </Canvas>
                 </div>
@@ -110,11 +113,8 @@ const AltPage = () => {
                 <div style={{width:"33%", height: "33%", position: "absolute", bottom: "0", left: "33%", overflow: "hidden"}} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut}>
                     <Canvas>
                         <AnimatedMoleculeMesh atoms={atoms} scale={0.3} backgroundless={true} />
-
                         <AnimatedFiltrationVisualization atoms={atoms} filtration_parameter={springs.scale} lineWidth={0.1} />
-
                         <OrbitControls />
-
                         <Environment preset={'city'} blur={0.9}/>
                     </Canvas>
                 </div>
@@ -122,14 +122,11 @@ const AltPage = () => {
                 <div style={{width:"33%", height: "33%", position: "absolute", bottom: "0", left: "66%", overflow: "hidden"}}>
                     <Canvas>
                         <AnimatedMoleculeMesh atoms={atoms} scale={0.3} />
-
                         <AnimatedFiltrationVisualization atoms={atoms} filtration_parameter={springs.scale} lineWidth={0.1} />
-
                         <OrbitControls />
-
                         <Environment preset={'city'} background blur={0.9}/>
                     </Canvas>
-                </div>
+                </div> */}
 
             </div>
 

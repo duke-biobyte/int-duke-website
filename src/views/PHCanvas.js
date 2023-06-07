@@ -5,7 +5,7 @@ import React, { useRef, useState, Fragment, useEffect } from 'react';
 // Three.js related imports
 import * as THREE from 'three';
 import { PDBLoader } from 'three-stdlib';
-import { OrbitControls,  Environment, Line, Center  } from '@react-three/drei';
+import { OrbitControls,  Environment, Center  } from '@react-three/drei';
 import { Canvas, useFrame, extend } from '@react-three/fiber';
 import { MeshLineGeometry, MeshLineMaterial, raycast } from 'meshline';
 import { Leva, useControls, folder } from 'leva';
@@ -108,7 +108,6 @@ function PHPlot(props) {
     <Fragment>
       <RVStyles />
       <FlexibleXYPlot xDomain={[0, 5]}>
-        <LineSeries data={data} />
         {
           betti_0.map((d) => {
             return <LineSeries data={d} color={'red'} />
@@ -124,6 +123,7 @@ function PHPlot(props) {
             return <LineSeries data={d} color={'yellow'} />
           })
         }
+
         <Crosshair
           values={[{x: props.scale, y: 0}]}
           style={{line: {backgroundColor: 'azure'}}}
@@ -274,6 +274,9 @@ const PHCanvas = () => {
   const homology_file_map = {}
   molecules.map((m) => homology_file_map[m] = "/homologies/" + m + ".json")
 
+  // load homology data
+  const [PHData, setPHData] = useState([]);
+
   useEffect(() => {
     if (molecule) {
       loader.load(pdb_file_map[molecule], (pdb) => {
@@ -285,12 +288,9 @@ const PHCanvas = () => {
       .then(response => response.json())
       .then(jsonData => {
         setPHData(jsonData);
-      });
+      })
     }
   }, [molecule])
-
-  // load homology data
-  const [PHData, setPHData] = useState([]);
 
   const { preset, blur } = useControls("Debug Controls", {
     preset: {
@@ -352,6 +352,7 @@ const PHCanvas = () => {
             <Environment preset={preset} background blur={blur}/>
             <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
         </Canvas>
+
         <Draggable>
             <div style={{ position: 'absolute', width: decimal_to_percentage(barcode_width), aspectRatio: '16/9', top: '0', left: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
                 <center>Persistence Barcode</center>
