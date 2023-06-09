@@ -15,16 +15,12 @@ import { LayerMaterial, Depth, Fresnel } from 'lamina'
 import SEO from 'react-seo-component';
 import { Perf } from 'r3f-perf'
 import Draggable from 'react-draggable';
-import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import scrollUpIcon from '../assets/images/icons/noun-scroll-up-607573-optimized.svg'
 import { useInView } from '@react-spring/three';
-import { FullPage, Slide } from 'react-full-page/lib';
 
-// react-vis related imports
-import { FlexibleXYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Crosshair, DiscreteColorLegend } from 'react-vis';
-import RVStyles from 'react-vis-styles';
-import '../components/novelties/react-vis/HideTooltip.css';
+// visx
+import { AnimatedAxis, AnimatedGrid, AnimatedLineSeries, LineSeries, XYChart, Tooltip, AnnotationLineSubject, Annotation} from '@visx/xychart';
 
 // keep explanation page in a separate file
 import PHExplanation from '../components/PHsections/PHExplanation';
@@ -98,48 +94,86 @@ const BallMesh = ({position, scale, color, backgroundless, ...props}) => {
 
 function PHPlot(props) {
   var y = 0
-  const data = props.data
+  const data = props.data.filter((d) => d[0] !== d[1])
+  const scale = props.scale
 
   const betti_0 = data.filter((d) => d[2] === 0).map((d) => {y += 1; return [{x: d[0], y: y}, {x: d[1], y: y}]})
   const betti_1 = data.filter((d) => d[2] === 1).map((d) => {y += 1; return [{x: d[0], y: y}, {x: d[1], y: y}]})
   const betti_2 = data.filter((d) => d[2] === 2).map((d) => {y += 1; return [{x: d[0], y: y}, {x: d[1], y: y}]})
 
+
+  const accessors = {
+    xAccessor: (d) => d && d.x,
+    yAccessor: (d) => d && d.y,
+    colorAccessor: (d) => d && d.color,
+  }
+
+  const chartRef = useRef(null)
+
   return (
-    <Fragment>
-      <RVStyles />
-      <FlexibleXYPlot xDomain={[0, 5]}>
+    <>
+      <XYChart xScale={{ type: 'linear', domain: [0, 5] }} yScale={{ type: 'linear' }} ref={chartRef}>
+        <AnimatedAxis orientation="bottom" label="Filtration Radius (Å)" />
+
         {
-          betti_0.map((d) => {
-            return <LineSeries data={d} color={'red'} />
-          })
-        }
-        {
-          betti_1.map((d) => {
-            return <LineSeries data={d} color={'blue'} />
-          })
-        }
-        {
-          betti_2.map((d) => {
-            return <LineSeries data={d} color={'yellow'} />
-          })
+          betti_0.map((d, i) => {
+            return (
+              <LineSeries
+                key={i} dataKey={`Line ${i}`} data={d} stroke="red" {...accessors} />
+            )
+           })
         }
 
-        <Crosshair
-          values={[{x: props.scale, y: 0}]}
-          style={{line: {backgroundColor: 'azure'}}}
-        />
-        <XAxis />
-      </FlexibleXYPlot>
-      <DiscreteColorLegend items={
-        [
-          {title: 'Betti 0 (connected components)', color: 'red'},
-          {title: 'Betti 1 (holes)', color: 'blue'},
-          {title: 'Betti 2 (voids)', color: 'yellow'}
-        ]
-      }/>
-    </Fragment>
+        {
+          betti_1.map((d, i) => {
+            return (
+              <LineSeries
+                key={i} dataKey={`Line ${i}`} data={d} stroke="yellow" {...accessors} />
+            )
+           })
+        }
+
+        {
+          betti_2.map((d, i) => {
+            return (
+              <LineSeries
+                key={i} dataKey={`Line ${i}`} data={d} stroke="blue" {...accessors} />
+            )
+           })
+        }
+
+      <Annotation datum={{
+        x: scale,
+        y: 0,
+      }} {...accessors}>
+        <AnnotationLineSubject />
+      </Annotation>
+
+
+      </XYChart>
+      <Legend />
+    </>
 
   )
+}
+
+function Legend() {
+  const legendData = [
+    { color: 'red', label: 'Betti 0' },
+    { color: 'yellow', label: 'Betti 1' },
+    { color: 'blue', label: 'Betti 2' },
+  ];
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }} className='pt-16'>
+      {legendData.map((item, index) => (
+        <div key={index} style={{ display: 'flex', alignItems: 'center', marginLeft: '20px' }}>
+          <div style={{ width: '20px', height: '2px', backgroundColor: item.color }} />
+          <div style={{ marginLeft: '5px' }} className='text-xs'>{item.label}</div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 const FiltrationVisualization = (props) => {
@@ -252,7 +286,7 @@ const PHCanvas = () => {
 
   // load pdb file
   const [atoms, setAtoms] = useState([])
-  const molecules = ["caffeine", "ethanol", "cholesterol", "fructose", "glucose", "adenine", "cytosine", "thymine", "guanine", "rapamycin", "1fsv", "1aa5", "1b9p"]
+  const molecules = ["caffeine", "ethanol",  "fructose", "glucose", "adenine", "cytosine", "thymine", "guanine", "cholesterol","rapamycin", "1fsv", "1aa5", "1b9p"]
 
   const choices = {}
   molecules.map((m) => choices[m] = m)
@@ -354,8 +388,8 @@ const PHCanvas = () => {
         </Canvas>
 
         <Draggable>
-            <div style={{ position: 'absolute', width: decimal_to_percentage(barcode_width), aspectRatio: '16/9', top: '0', left: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
-                <center>Persistence Barcode</center>
+            <div style={{ position: 'absolute', width: decimal_to_percentage(barcode_width), aspectRatio: '4/3', top: '0', left: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
+                <center><b>Persistence Barcode</b></center>
                 <PHPlot data={PHData} scale={scale} />
             </div>
         </Draggable>
