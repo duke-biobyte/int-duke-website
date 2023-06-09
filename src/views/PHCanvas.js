@@ -112,45 +112,48 @@ function PHPlot(props) {
 
   return (
     <>
-      <XYChart xScale={{ type: 'linear', domain: [0, 5] }} yScale={{ type: 'linear' }} ref={chartRef}>
-        <AnimatedAxis orientation="bottom" label="Filtration Radius (Å)" />
+      <div style={{height: "75%"}}>
 
-        {
-          betti_0.map((d, i) => {
-            return (
-              <LineSeries
-                key={i} dataKey={`Line ${i}`} data={d} stroke="red" {...accessors} />
-            )
-           })
-        }
+        <XYChart xScale={{ type: 'linear', domain: [0, 5] }} yScale={{ type: 'linear' }} ref={chartRef}>
+          <AnimatedAxis orientation="bottom" label="Filtration Radius (Å)" />
 
-        {
-          betti_1.map((d, i) => {
-            return (
-              <LineSeries
-                key={i} dataKey={`Line ${i}`} data={d} stroke="yellow" {...accessors} />
-            )
-           })
-        }
+          {
+            betti_0.map((d, i) => {
+              return (
+                <LineSeries
+                  key={i} dataKey={`Line ${i}`} data={d} stroke="red" {...accessors} />
+              )
+            })
+          }
 
-        {
-          betti_2.map((d, i) => {
-            return (
-              <LineSeries
-                key={i} dataKey={`Line ${i}`} data={d} stroke="blue" {...accessors} />
-            )
-           })
-        }
+          {
+            betti_1.map((d, i) => {
+              return (
+                <LineSeries
+                  key={i} dataKey={`Line ${i}`} data={d} stroke="yellow" {...accessors} />
+              )
+            })
+          }
 
-      <Annotation datum={{
-        x: scale,
-        y: 0,
-      }} {...accessors}>
-        <AnnotationLineSubject />
-      </Annotation>
+          {
+            betti_2.map((d, i) => {
+              return (
+                <LineSeries
+                  key={i} dataKey={`Line ${i}`} data={d} stroke="blue" {...accessors} />
+              )
+            })
+          }
+
+        <Annotation datum={{
+          x: scale,
+          y: 0,
+        }} {...accessors}>
+          <AnnotationLineSubject />
+        </Annotation>
 
 
-      </XYChart>
+        </XYChart>
+      </div>
       <Legend />
     </>
 
@@ -388,7 +391,7 @@ const PHCanvas = () => {
         </Canvas>
 
         <Draggable>
-            <div style={{ position: 'absolute', width: decimal_to_percentage(barcode_width), aspectRatio: '4/3', top: '0', left: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
+            <div style={{ position: 'absolute', width: decimal_to_percentage(barcode_width), aspectRatio: '3/4', top: '0', left: '0', zIndex: '1', overflow: 'hidden', borderRadius: '10px' }}>
                 <center><b>Persistence Barcode</b></center>
                 <PHPlot data={PHData} scale={scale} />
             </div>
