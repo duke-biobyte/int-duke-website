@@ -10,7 +10,7 @@
     "@react-spring/three": "^9.7.1",
     "@react-spring/web": "^9.7.2",
     "@react-three/drei": "^9.58.1",
-    "@react-three/fiber": "^8.12.",
+    "@react-three/fiber": "^8.13.1",
     "@visx/group": "^3.0.0",
     "@visx/mock-data": "^3.0.0",
     "@visx/responsive": "^3.0.0",
@@ -56,8 +56,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "testDeploy": "react-scripts build; vercel",
-    "deploy": "react-scripts build; vercel --prod"
+    "testDeploy": "react-scripts build; vercel --local-config vercel.json",
+    "deploy": "react-scripts build; vercel --prod --local-config vercel.json"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -102,7 +102,7 @@ function Env() {
   //     onChange: (value) => startTransition(() => setPreset(value))
   //   }
   // })
-  return <Environment preset={preset} background blur={blur} />
+  return <Environment files="/venice_sunset_1k.hdr" background blur={blur} />
 }
 
 export default AmazingShadow;

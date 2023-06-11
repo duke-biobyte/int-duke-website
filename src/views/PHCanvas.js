@@ -386,7 +386,7 @@ const PHCanvas = () => {
             }
             <MoleculeMesh atoms={atoms} scale={scale / 2} backgroundless={low_quality_materials} />
             <OrbitControls />
-            <Environment preset={preset} background blur={blur}/>
+            <Environment files="/venice_sunset_1k.hdr" background blur={blur}/>
             <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
         </Canvas>
 
