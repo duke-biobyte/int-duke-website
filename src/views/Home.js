@@ -12,6 +12,7 @@ import Cta from '../components/sections/Cta';
 import SEO from 'react-seo-component'
 import CalendarSection from '../components/sections/CalendarSection';
 import Podcast from '../components/sections/Podcast';
+import PHSectionIntro from '../components/sections/PHSectionIntro';
 
 const Home = () => {
 
@@ -33,6 +34,7 @@ const Home = () => {
       <FeaturesSplit invertMobile topDivider imageFill />
       <Difference invertMobile topDivider imageFill />
       <Podcast invertMobile topDivider imageFill />
+      <PHSectionIntro invertMobile topDivider imageFill />
       <Showcase invertMobile topDivider imageFill />
       <CurrentProjects topDivider />
       <PeopleTiles/>
