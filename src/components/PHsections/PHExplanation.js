@@ -90,6 +90,16 @@ const PHExplanation = () => {
   return (
     <>
       <PHHero className="illustration-section-01" />
+      <div className="container-xs reveal-from-bottom center-content pb-32" data-reveal-delay="600">
+        <ButtonGroup>
+          <Button tag="a" color="primary" wideMobile href="https://github.com/longyuxi/int-duke-website/blob/master/src/views/PHCanvas.js">
+            Source Code
+            </Button>
+          <Button tag="a" color="primary" wideMobile href="https://medium.com/@longyuxi/persistent-homology-an-interactive-demonstration-in-biochemistry-context-82bc189cf059">
+            Documentation
+            </Button>
+        </ButtonGroup>
+      </div>
       <Simplex />
     </>
   )
