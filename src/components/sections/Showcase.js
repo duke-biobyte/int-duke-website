@@ -143,6 +143,38 @@ const Showcase = ({
             </div>
           </div>
 
+          <div className={splitClasses}>
+
+            <div className="split-item">
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                <Image
+                  src={require('./../../assets/images/events/doherty.png')}
+                  alt="Speaker event with Michael Quinn Doherty, Director of Formulation Development at MedPharm US"
+                  width={528}
+                  height={396} />
+              </div>
+
+              <div className={
+                classNames(
+                  'split-item-image center-content-mobile reveal-from-bottom',
+                  imageFill && 'split-item-image-fill'
+                )}
+                data-reveal-container=".split-item">
+                {/* <Image
+                  src={require('./../../assets/images/events/ben.png')}
+                  alt="Speaker event with Ben Logsdon, VP of Computational Biology at Cajal Neuroscience"
+                  width={528}
+                  height={396} /> */}
+              </div>
+
+            </div>
+          </div>
+
           <SectionSubHeader data={futureEventsSubheader} className="center-content" />
 
 
@@ -168,11 +200,11 @@ const Showcase = ({
                   imageFill && 'split-item-image-fill'
                 )}
                 data-reveal-container=".split-item">
-                <Image
-                  src={require('./../../assets/images/events/doherty.png')}
+                {/* <Image
+                  // src={require('./../../assets/images/events/doherty.png')}
                   alt="Speaker event with Michael Quinn Doherty, Director of Formulation Development at MedPharm US"
                   width={528}
-                  height={396} />
+                  height={396} /> */}
               </div>
 
             </div>

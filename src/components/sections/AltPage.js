@@ -99,12 +99,12 @@ const AltPage = () => {
 
                 <AltPageBackground />
 
-                {/* <div style={{width:"33%", height: "33%", position: "absolute", bottom: "0", left: "0", overflow: "hidden"}}>
+                <div style={{width:"33%", height: "33%", position: "absolute", bottom: "0", left: "0", overflow: "hidden"}}>
                     <Canvas>
                         <AnimatedMoleculeMesh atoms={atoms} scale={0.3} />
                         <AnimatedFiltrationVisualization atoms={atoms} filtration_parameter={springs.scale} lineWidth={0.1} />
                         <OrbitControls />
-                        <Environment preset={'city'} background blur={0.9}/>
+                        {/* <Environment preset={'city'} background blur={0.9}/> */}
                     </Canvas>
                 </div>
 
@@ -114,8 +114,8 @@ const AltPage = () => {
                     <Canvas>
                         <AnimatedMoleculeMesh atoms={atoms} scale={0.3} backgroundless={true} />
                         <AnimatedFiltrationVisualization atoms={atoms} filtration_parameter={springs.scale} lineWidth={0.1} />
-                        <OrbitControls />
-                        <Environment preset={'city'} blur={0.9}/>
+                        {/* <OrbitControls /> */}
+                        {/* <Environment preset={'city'} blur={0.9}/> */}
                     </Canvas>
                 </div>
 
@@ -124,9 +124,9 @@ const AltPage = () => {
                         <AnimatedMoleculeMesh atoms={atoms} scale={0.3} />
                         <AnimatedFiltrationVisualization atoms={atoms} filtration_parameter={springs.scale} lineWidth={0.1} />
                         <OrbitControls />
-                        <Environment preset={'city'} background blur={0.9}/>
+                        {/* <Environment preset={'city'} background blur={0.9}/> */}
                     </Canvas>
-                </div> */}
+                </div>
 
             </div>
 
