@@ -91,9 +91,9 @@ const Hero = ({
                   <Button tag="a" color="dark" wideMobile href="https://github.com/cruip/open-react-template/">
                     View on Github
                     </Button> */}
-                  <Button tag="a" color="primary" wideMobile href="https://forms.gle/DqpPWCMc7t8Dbm7V6">
+                  {/* <Button tag="a" color="primary" wideMobile href="https://forms.gle/DqpPWCMc7t8Dbm7V6">
                     Apply Here
-                    </Button>
+                    </Button> */}
                 </ButtonGroup>
               </div>
             </div>

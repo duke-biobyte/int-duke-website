@@ -199,7 +199,7 @@ const Simplex = ({
 
             <div className='container-sm'>
               <h3 className='pt-32'>References and credits</h3>
-              <p>The source of each image is in its alt attribute. Papers referenced is <i>Nguyen et al. (2018), doi: 10.1007/s10822-018-0146-6</i></p>
+              <p>Hover over each image to see its source. The paper referenced in this demonstration is <i>Nguyen et al. (2018), doi: 10.1007/s10822-018-0146-6</i></p>
             </div>
 
             <div className='container-sm'>

@@ -67,11 +67,11 @@ const PHSectionIntro = ({
           <div className='container-xs'>
             <center>
               <div className='pb-16'>
-                The world's first <span className='text-color-primary'>interactive</span> introduction to <span className='text-color-primary'>persistent homology</span> in light of biomolecules. See <a href='https://medium.com/@longyuxi/persistent-homology-an-interactive-demonstration-in-biochemistry-context-82bc189cf059'><u><span className='text-color-primary'>this medium post</span></u></a> for my motivation behind this animation.
+                The world's first <span className='text-color-primary'>interactive</span> demonstration of <span className='text-color-primary'>persistent homology</span> in the context of biomolecules. See <a href='https://medium.com/@longyuxi/persistent-homology-an-interactive-demonstration-in-biochemistry-context-82bc189cf059'><u><span className='text-color-primary'>this medium post</span></u></a> for my motivation behind this animation. <i>-- Jaden</i>
               </div>
 
             <Link to="/ph">
-              <Image src={require('./../../assets/images/PH/expanding-fixed-width-screenshot.png')} alt="Features split 01" width={896} height={504} />
+              <Image src={require('./../../assets/images/PH/expanding-fixed-width-screenshot.png')} alt="Persistent Homology Demo" width={896} height={504} />
             </Link>
             </center>
 

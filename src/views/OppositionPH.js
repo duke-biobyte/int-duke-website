@@ -22,45 +22,9 @@ import { useInView } from '@react-spring/three';
 // visx
 import { AnimatedAxis, AnimatedGrid, AnimatedLineSeries, LineSeries, XYChart, Tooltip, AnnotationLineSubject, Annotation} from '@visx/xychart';
 
-// keep explanation page in a separate file
-import PHExplanation from '../components/PHsections/PHExplanation';
-
 extend({ MeshLineGeometry, MeshLineMaterial })
 
-// An interesting looking material from https://codesandbox.io/s/ledhe1
-// Performs well with rotating the camera, but not from scaling the object
-// Could be interesting someday
-const GradientMaterial = () => {
-  const { gradient } = useControls({ gradient: { value: 0.7, min: 0, max: 1 } })
-  const ref = useRef()
-  // Animate gradient
-  useFrame((state) => {
-    const sin = Math.sin(state.clock.elapsedTime / 2)
-    const cos = Math.cos(state.clock.elapsedTime / 2)
-    ref.current.layers[0].origin.set(cos / 2, 0, 0)
-    ref.current.layers[1].origin.set(cos, sin, cos)
-    ref.current.layers[2].origin.set(sin, cos, sin)
-    ref.current.layers[3].origin.set(cos, sin, cos)
-  })
-
-  return (
-    <>
-      <LayerMaterial ref={ref} toneMapped={false}>
-        <Depth colorA="#ff0080" colorB="black" alpha={1} mode="normal" near={0.5 * gradient} far={0.5} origin={[0, 0, 0]} />
-        <Depth colorA="blue" colorB="#f7b955" alpha={1} mode="add" near={2 * gradient} far={2} origin={[0, 1, 1]} />
-        <Depth colorA="green" colorB="#f7b955" alpha={1} mode="add" near={3 * gradient} far={3} origin={[0, 1, -1]} />
-        <Depth colorA="white" colorB="red" alpha={1} mode="overlay" near={1.5 * gradient} far={1.5} origin={[1, -1, -1]} />
-        <Fresnel mode="add" color="white" intensity={0.5} power={1.5} bias={0.05} />
-      </LayerMaterial>
-    </>
-  )
-}
-
 const BallMesh = ({position, scale, color, backgroundless, ...props}) => {
-  const color_to_string = (color) => {
-    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`
-  }
-
   const { x_segments, y_segments } = useControls("Debug Controls",{
     'Sphere Parameters': folder({
       x_segments: { value: 24, min: 1, max: 64, step: 1 },
@@ -78,7 +42,7 @@ const BallMesh = ({position, scale, color, backgroundless, ...props}) => {
     return (
       <mesh castShadow position={position} {...props}>
         <sphereGeometry args={[scale, x_segments, y_segments]} />
-        <meshBasicMaterial color={color_to_string(color)}/>
+        <meshBasicMaterial color={color}/>
         <directionalLight position={[0, 0, 10]} intensity={0.5} />
       </mesh>
     )}
@@ -86,7 +50,7 @@ const BallMesh = ({position, scale, color, backgroundless, ...props}) => {
       return (
         <mesh castShadow position={position} {...props}>
           <sphereGeometry args={[scale, x_segments, y_segments]} />
-          <meshPhysicalMaterial roughness={0.2} transmission={0.75} color={color_to_string(color)} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
+          <meshPhysicalMaterial roughness={0.2} transmission={0.75} color={color} ior={1.5} reflectivity={0.5} thickness={2.5} transparent={1}/>
         </mesh>
       )
     }
@@ -181,7 +145,7 @@ function Legend() {
 
 const FiltrationVisualization = (props) => {
   const atoms = props.atoms
-  const coordinates = atoms.map((a) => [a[0], a[1], a[2]])
+  const coordinates = atoms.map((a) => [a[0], a[1], a[2], a[a.length - 1]])
   const filtration_parameter = props.filtration_parameter
   FiltrationVisualization.defaultProps = {
     lineWidth: 0.03
@@ -199,13 +163,21 @@ const FiltrationVisualization = (props) => {
 
   const euclideanDistance = (a, b) => Math.hypot(...Object.keys(a).map(k => b[k] - a[k]));
 
+  const pairwiseOppositionDistance = (a, b) => {
+    if (a[a.length-1] != b[b.length-1]) {
+      return euclideanDistance(a.slice(0, -1), b.slice(0, -1))
+    } else {
+      return Infinity
+    }
+  }
+
   const edges = combinations(coordinates).map((c) =>  (
     {
-      "line": [c[0], c[1]].flat(),
-      "distance": euclideanDistance(c[0], c[1])
+      "line": [c[0].slice(0, -1), c[1].slice(0, -1)].flat(),
+      "distance": pairwiseOppositionDistance(c[0], c[1])
     }
-  )
-  )
+  ))
+
   const center = getCenter(atoms)
 
   return (
@@ -241,12 +213,14 @@ const getCenter = (atoms) => {
 }
 
 
-const MoleculeMesh = ({atoms, scale, ...props}) => {
-  const { fix_ball_scale } = useControls({
-    fix_ball_scale: {
-      value: false
-    }
-  })
+const MoleculeMesh = ({atoms, scale, color, ...props}) => {
+  // const { fix_ball_scale } = useControls({
+  //   fix_ball_scale: {
+  //     value: false
+  //   }
+  // })
+
+  const fix_ball_scale = true
 
   var ball_scale
 
@@ -263,7 +237,7 @@ const MoleculeMesh = ({atoms, scale, ...props}) => {
       <group position={center}>
         {
           atoms.map((atom, idx) => (
-            <BallMesh position={[atom[0], atom[1], atom[2]]} scale={ball_scale} color={atom[3]} {...props}/>
+            <BallMesh position={[atom[0], atom[1], atom[2]]} scale={ball_scale} color={color} {...props}/>
           ))
         }
       </group>
@@ -272,7 +246,7 @@ const MoleculeMesh = ({atoms, scale, ...props}) => {
   )
 }
 
-const PHCanvas = () => {
+const OppositionPHCanvas = () => {
   // Only show leva when canvas is in view
   const [canvasRef, canvasInView] = useInView()
 
@@ -288,14 +262,26 @@ const PHCanvas = () => {
   })
 
   // load pdb file
-  const [atoms, setAtoms] = useState([])
+  const [molecule1Atoms, setMolecule1Atoms] = useState([])
+  const [molecule2Atoms, setMolecule2Atoms] = useState([])
+  const [allAtoms, setAllAtoms] = useState([])
+
   const molecules = ["caffeine", "ethanol",  "fructose", "glucose", "adenine", "cytosine", "thymine", "guanine", "cholesterol","rapamycin", "1fsv", "1aa5", "1b9p"]
 
   const choices = {}
   molecules.map((m) => choices[m] = m)
 
-  const { molecule } = useControls({
-    molecule: {value: "caffeine",
+  const { molecule1 } = useControls({
+    molecule1: {value: "caffeine",
+    options: choices,
+  }},
+  {
+    "order": 99,
+    "collapsed": true
+  })
+
+  const { molecule2 } = useControls({
+    molecule2: {value: "ethanol",
     options: choices,
   }},
   {
@@ -315,19 +301,40 @@ const PHCanvas = () => {
   const [PHData, setPHData] = useState([]);
 
   useEffect(() => {
-    if (molecule) {
-      loader.load(pdb_file_map[molecule], (pdb) => {
+    if (molecule1) {
+      loader.load(pdb_file_map[molecule1], (pdb) => {
         const atoms = pdb.json.atoms
-        setAtoms(atoms)
+        setMolecule1Atoms(atoms.map(a => a.concat(['m1'])))
       })
 
-    fetch(homology_file_map[molecule])
+    fetch(homology_file_map[molecule1])
       .then(response => response.json())
       .then(jsonData => {
         setPHData(jsonData);
       })
     }
-  }, [molecule])
+  }, [molecule1])
+
+  useEffect(() => {
+    if (molecule2) {
+      loader.load(pdb_file_map[molecule2], (pdb) => {
+        const atoms = pdb.json.atoms
+        setMolecule2Atoms(atoms.map(a => a.concat(['m2'])))
+      })
+
+    fetch(homology_file_map[molecule2])
+      .then(response => response.json())
+      .then(jsonData => {
+        setPHData(jsonData);
+      })
+    }
+  }, [molecule2])
+
+  useEffect(() => {
+    if (molecule1Atoms && molecule2Atoms) {
+      setAllAtoms(molecule1Atoms.concat(molecule2Atoms))
+    }
+  }, [molecule1Atoms, molecule2Atoms])
 
   const { preset, blur } = useControls("Debug Controls", {
     preset: {
@@ -356,7 +363,7 @@ const PHCanvas = () => {
   return (
     <>
       <SEO
-        title="Interactive Persistent Homology on Molecules"
+        title="Opposition Persistent Homology Page"
         titleTemplate=""
         titleSeparator=""
         description=''
@@ -365,18 +372,6 @@ const PHCanvas = () => {
         siteLocale='en_US'
       />
 
-
-      <div style={{width:"100%", top: "0", left: "0", zIndex: "0", overflow: "hidden"}}>
-        <Element name='introductionPage'>
-          <PHExplanation />
-          {/* <center><span onClick={() => scroller.scrollTo('canvas', {smooth: true, offset: -100})} style={{margin: "10px", zIndex: "1"}} style={{color: "red"}}>
-            <p>Click here to go down to canvas</p>
-            <p>(maybe use this? or just let the user scroll down?)</p>
-            <p>We also need to address previous works on our poster.</p>
-            </span></center> */}
-        </Element>
-      </div>
-
       <div style={{ position: 'relative', width: '100%', height: '100vh', top: '0', left: '0', zIndex: '0', overflow: 'hidden' }}>
         <Leva hidden={!canvasInView} />
 
@@ -384,10 +379,11 @@ const PHCanvas = () => {
             {
                 show_performance && <Perf position="bottom-left" />
             }
-            <MoleculeMesh atoms={atoms} scale={scale / 2} backgroundless={low_quality_materials} />
+            <MoleculeMesh atoms={molecule1Atoms} scale={scale / 2} backgroundless={low_quality_materials} color={'red'} />
+            <MoleculeMesh atoms={molecule2Atoms} scale={scale / 2} backgroundless={low_quality_materials} color={'green'} />
             <OrbitControls />
             <Environment files="/venice_sunset_1k.hdr" background blur={blur}/>
-            <FiltrationVisualization atoms={atoms} filtration_parameter={scale}/>
+            <FiltrationVisualization atoms={allAtoms} filtration_parameter={scale}/>
         </Canvas>
 
         <Draggable>
@@ -413,5 +409,5 @@ const PHCanvas = () => {
   );
 }
 
-export default PHCanvas;
+export default OppositionPHCanvas;
 export { MoleculeMesh, BallMesh, FiltrationVisualization };

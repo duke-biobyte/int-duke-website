@@ -9,6 +9,7 @@ import { MathJaxContext } from 'better-react-mathjax';
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
 import AltLayout from './layouts/AltLayout';
+import OppositionPHCanvas from './views/OppositionPH';
 
 // Views 
 import Home from './views/Home';
@@ -59,6 +60,7 @@ const App = () => {
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
           <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
           <AppRoute exact path="/ph" component={PHCanvas} layout={AltLayout} />
+          <AppRoute exact path="/poph" component={OppositionPHCanvas} layout={AltLayout} />
         </Switch>
       )} />
     </MathJaxContext>

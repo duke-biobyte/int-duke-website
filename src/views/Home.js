@@ -39,7 +39,7 @@ const Home = () => {
       <CurrentProjects topDivider />
       <PeopleTiles/>
       <CalendarSection />
-      <Cta split />
+      {/* <Cta split /> */}
     </>
   );
 }
