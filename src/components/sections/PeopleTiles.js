@@ -95,10 +95,6 @@ const PeopleTiles = ({
       title: 'Project 2 Member',
       photo: require('../../assets/images/people/cropped/sid.png') },
 
-    { name: 'Mike Bennett',
-      title: 'Project 2 Member',
-      photo: require('../../assets/images/people/cropped/mike.png') },
-
     { name: 'Matthew Ahlers',
       title: 'Project 3 Member',
       photo: require('../../assets/images/people/cropped/matthew.png') },
@@ -121,6 +117,13 @@ const PeopleTiles = ({
 
   ]
 
+  const alumni = [
+
+    { name: 'Mike Bennett',
+      title: 'Class of 2023',
+      photo: require('../../assets/images/people/cropped/mike.png') },
+
+  ]
   return (
     <section
       {...props}
@@ -141,6 +144,9 @@ const PeopleTiles = ({
 
           <SectionSubheader data={{title: 'Special Thanks'}} className="center-content" />
           <HeadshotTiles tilesClasses={tilesClasses} people={specialThanks}></HeadshotTiles>
+
+          <SectionSubheader data={{title: 'Alumni'}} className="center-content" />
+          <HeadshotTiles tilesClasses={tilesClasses} people={alumni}></HeadshotTiles>
 
         </div>
 
