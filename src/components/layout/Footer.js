@@ -49,7 +49,7 @@ const Footer = ({
             {/* <FooterNav /> */}
             {/* <div className="footer-copyright">Made by Jaden Long. All right reserved</div> */}
             <div className="footer-copyright">
-              Made by Jaden Long using a template from Cruip.
+              Made by <a href='https://yuxi-long.com'>Jaden Long</a> using a template from Cruip.
               <p> See source code on <a href='https://github.com/longyuxi/int-duke-website'>GitHub</a>.</p>
             </div>
           </div>
