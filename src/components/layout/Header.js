@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Logo from './partials/Logo';
 import Image from '../elements/Image';
+import Button from '../elements/Button';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -119,21 +120,34 @@ const Header = ({
                 <div className="header-nav-inner">
                   <ul className={
                     classNames(
-                      'list-reset text-xs',
+                      'list-reset',
                       navPosition && `header-nav-${navPosition}`
                     )}>
-                    {/* <li>
-                      <Link to="#0" onClick={closeMenu}>Documentation</Link>
-                    </li> */}
+                    <li>
+                      <Link style={{ color: '#33363A' }} to="#0" onClick={closeMenu}>About</Link>
+                    </li>
+                    <li>
+                      <Link style={{ color: '#33363A' }} to="/people" onClick={closeMenu}>People</Link>
+                    </li>
+                    <li>
+                      <Link style={{ color: '#33363A' }} to="/projects" onClick={closeMenu}>Projects</Link>
+                    </li>
+                    <li>
+                        <Button tag="a" color="primary" wideMobile href="https://dukegroups.com/InTDuke/club_signup"
+                        >
+                        Join Us
+                        </Button>
+                    </li>
                   </ul>
-                  {!hideSignin &&
+
+                  {/* {!hideSignin &&
                     <ul
                       className="list-reset header-nav-right"
                     >
-                      {/* <li>
-                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sign up</Link>
-                      </li> */}
-                    </ul>}
+                      <li>
+                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Sus amogus</Link>
+                      </li>
+                    </ul>} */}
                 </div>
               </nav>
             </>}

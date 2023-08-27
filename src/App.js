@@ -14,6 +14,11 @@ import OppositionPHCanvas from './views/OppositionPH';
 // Views 
 import Home from './views/Home';
 import AltHome from './views/AltHome';
+import AboutPage from './views/AboutPage';
+import Scratch from './views/Scratch';
+import PeoplePage from './views/PeoplePage';
+import ProjectPage from './views/ProjectPage';
+
 
 // Initialize Google Analytics
 ReactGA.initialize(process.env.REACT_APP_GA_CODE);
@@ -57,8 +62,12 @@ const App = () => {
       ref={childRef}
       children={() => (
         <Switch>
-          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+          {/* <AppRoute exact path="/" component={Home} layout={LayoutDefault} /> */}
+          <AppRoute exact path="/" component={AboutPage} layout={LayoutDefault} />
           <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
+          <AppRoute exact path="/about" component={AboutPage} layout={LayoutDefault} />
+          <AppRoute exact path="/people" component={PeoplePage} layout={LayoutDefault} />
+          <AppRoute exact path="/projects" component={ProjectPage} layout={LayoutDefault} />
           <AppRoute exact path="/ph" component={PHCanvas} layout={AltLayout} />
           <AppRoute exact path="/poph" component={OppositionPHCanvas} layout={AltLayout} />
         </Switch>

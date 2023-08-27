@@ -66,7 +66,7 @@ const CalendarSection = ({
 
       <div className="container">
         <div className={innerClasses}>
-          <SectionHeader data={sectionHeader} className="center-content" />
+          {/* <SectionHeader data={sectionHeader} className="center-content" /> */}
           <Calendar apiKey={API_KEY} calendars={calendars} />
         </div>
       </div>

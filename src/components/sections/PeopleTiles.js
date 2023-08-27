@@ -149,8 +149,6 @@ const PeopleTiles = ({
           <HeadshotTiles tilesClasses={tilesClasses} people={alumni}></HeadshotTiles>
 
         </div>
-
-        <hr></hr>
       </div>
     </section>
   );
