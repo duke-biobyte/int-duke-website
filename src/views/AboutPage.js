@@ -34,6 +34,7 @@ const Home = () => {
       <Hero />
       <FeaturesSplit invertMobile topDivider imageFill />
       <Difference invertMobile topDivider imageFill />
+      <Showcase invertMobile topDivider imageFill />
       <CalendarSection />
       {/* <Cta split /> */}
       {/* About - People - Projects - Join Us */}

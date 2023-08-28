@@ -33,7 +33,6 @@ const ProjectPage = () => {
       <Background />
       <Podcast invertMobile imageFill />
       <PHSectionIntro invertMobile topDivider imageFill />
-      <Showcase invertMobile topDivider imageFill />
       <CurrentProjects topDivider />
     </>
   );
