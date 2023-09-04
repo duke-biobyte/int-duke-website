@@ -52,7 +52,7 @@ const Podcast = ({
 
   const sectionHeader = {
     title: 'Podcasts',
-    paragraph: 'We share the wisdom from innovators here. This section will be populated soon.'
+    paragraph: 'We share the wisdom from innovators here. This section will be populated soon!!'
   };
 
   return (
@@ -63,7 +63,14 @@ const Podcast = ({
       <div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
-
+          
+          {/* Add the Audio Player */}
+          <div align="center">
+            <audio class="player" controls preload="none">
+              <source src="https://docs.google.com/uc?export=open&id=1_AS3Y1dFKUqvwMMxXTT1jUjNWTLvK-JC" type="audio/mp3">
+              </source>
+            </audio>
+          </div>
         </div>
       </div>
     </section>
