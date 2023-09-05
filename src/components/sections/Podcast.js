@@ -52,7 +52,7 @@ const Podcast = ({
 
   const sectionHeader = {
     title: 'Podcasts',
-    paragraph: 'We share the wisdom from innovators here. This section will be populated soon!!'
+    paragraph: 'We share the wisdom from innovators here.'
   };
 
   return (
@@ -63,7 +63,14 @@ const Podcast = ({
       <div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
-          
+
+          <div className='container-xs'>
+            <center>
+              <div className='pb-32'>
+                Interview with <b>Dr. Vidyalakshmi Chandramohan</b> of Duke Neurosurgery Department done by William Yan and Jaden Long. Talks about her research, specifically about glioblastoma. (runtime: 10:53)
+              </div>
+            </center>
+          </div>
           {/* Add the Audio Player */}
           <div align="center">
             <audio class="player" controls preload="none">
