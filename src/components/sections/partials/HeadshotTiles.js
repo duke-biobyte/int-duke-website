@@ -43,6 +43,10 @@ const HeadshotTiles = ({
             <p className="m-0 text-sm">
               {people[i].title}
               </p>
+            <p className="m-0 text-xs">
+              {people[i].about}
+              </p>
+
           </div>
         </div>
       </div>
