@@ -141,7 +141,7 @@ const headsOfTech = [
     { name: 'Mason Wu',
       title: '',
       photo: require('../../assets/images/people/cropped/mason.png'), 
-      about: "Hello! My name is Mason and I am a member of the Class of 2026. I am from Xi’an, China, and I plan to pursue a double major in Computer Science and Biology. While I am still exploring potential research opportunities, I have a strong interest in the field of computational biology. In my free time, I enjoy photography, gaming, and traveling to new places." },
+      about: "Hello. My name is Mason and I am a member of the Class of 2026. I am from Xi’an, China, and I plan to pursue a double major in Computer Science and Biology. While I am still exploring potential research opportunities, I have a strong interest in the field of computational biology. In my free time, I enjoy photography, gaming, and traveling to new places." },
 
     { name: 'Bowen Jiang',
       title: '',
