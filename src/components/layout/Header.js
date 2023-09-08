@@ -89,7 +89,7 @@ const Header = ({
           )}>
           <Logo />
 
-          A chapter of
+          {/* A chapter of
 
           <a href='https://www.in-transcription.org'>
             <Image
@@ -97,7 +97,8 @@ const Header = ({
               alt="Logo of In Transcription"
               width={64}
               height={64} />
-          </a>
+          </a> */}
+
           {!hideNav &&
             <>
               <button
@@ -133,7 +134,7 @@ const Header = ({
                       <Link style={{ color: '#33363A' }} to="/projects" onClick={closeMenu}>Projects</Link>
                     </li>
                     <li>
-                        <Button tag="a" color="primary" wideMobile href="https://dukegroups.com/InTDuke/club_signup"
+                        <Button tag="a" color="primary" wideMobile href="https://forms.gle/946BAvhpgee2q8Qk6"
                         >
                         Join Us
                         </Button>

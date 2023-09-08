@@ -77,7 +77,7 @@ const Hero = ({
                 </p>
             </div>
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              InTranscription<span className="text-color-primary">@Duke</span>
+              Duke <span className="text-color-primary">BioByte</span>
             </h1>
             <div className="container-xs">
               <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">

@@ -54,10 +54,9 @@ const Footer = ({
             </div>
           </div>
 
-          <div className="footer-bottom space-between text-xxs text-color-low invert-order-desktop">
+          {/* <div className="footer-bottom space-between text-xxs text-color-low invert-order-desktop">
             <div className="footer-copyright">
               <p>We are part of the nation-wide biotechnology club <a href='https://www.in-transcription.org'>In Transcription </a>(<a href='https://www.linkedin.com/company/in-transcription/'>LinkedIn</a>)</p>
-              {/* <p><a href='https://www.linkedin.com/company/in-transcription/'>In Transcription's LinkedIn page</a></p>. */}
               <p>
                 <a href='https://www.in-transcription.org'>
                   <Image
@@ -68,7 +67,7 @@ const Footer = ({
                 </a>
               </p>
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>

@@ -20,9 +20,9 @@ const Home = () => {
     <>
       <SEO
         title="Home"
-        titleTemplate="InTranscription@Duke"
+        titleTemplate="Duke BioByte"
         titleSeparator=' - '
-        description='InTranscription@Duke is the premier biotechnology club for undergraduate students at Duke. We host biotech-related projects and regularly invite industry leaders for talks.'
+        description='Duke BioByte is the premier biotechnology club for undergraduate students at Duke. We host biotech-related projects and regularly invite industry leaders for talks.'
         image='../assets/images/splash-image.png'
         pathname='intduke.com'
         siteLanguage='en'
