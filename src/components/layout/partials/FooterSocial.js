@@ -21,7 +21,7 @@ const FooterSocial = ({
       <ul className="list-reset">
 
         <li>
-          <a href="https://www.linkedin.com/company/intranscription-duke/">
+          <a href="https://dukegroups.com/BioByte/club_signup">
             <Image
               // src={require('../../../assets/images/dukegroups-icon-round.png')}
               src={require('../../../assets/images/dukegroups-name.png')}
