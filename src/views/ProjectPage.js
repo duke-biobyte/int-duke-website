@@ -31,9 +31,9 @@ const ProjectPage = () => {
         author='Jaden Long'
       />
       <Background />
-      <Podcast invertMobile imageFill />
+      <CurrentProjects />
+      <Podcast invertMobile topDivider imageFill/>
       <PHSectionIntro invertMobile topDivider imageFill />
-      <CurrentProjects topDivider />
     </>
   );
 }
