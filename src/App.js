@@ -64,16 +64,16 @@ const App = () => {
         <Switch>
           {/* <AppRoute exact path="/" component={Home} layout={LayoutDefault} /> */}
           <AppRoute exact path="/" component={AboutPage} layout={LayoutDefault} />
-          <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
-          <AppRoute exact path="/about" component={AboutPage} layout={LayoutDefault} />
-          <AppRoute exact path="/people" component={PeoplePage} layout={LayoutDefault} />
-          <AppRoute exact path="/projects" component={ProjectPage} layout={LayoutDefault} />
-          <AppRoute exact path="/ph" component={PHCanvas} layout={AltLayout} />
-          <AppRoute exact path="/poph" component={OppositionPHCanvas} layout={AltLayout} />
         </Switch>
       )} />
     </MathJaxContext>
   );
 }
 
+          // <AppRoute exact path="/althome" component={AltHome} layout={AltLayout} />
+          // <AppRoute exact path="/about" component={AboutPage} layout={LayoutDefault} />
+          // <AppRoute exact path="/people" component={PeoplePage} layout={LayoutDefault} />
+          // <AppRoute exact path="/projects" component={ProjectPage} layout={LayoutDefault} />
+          // <AppRoute exact path="/ph" component={PHCanvas} layout={AltLayout} />
+          // <AppRoute exact path="/poph" component={OppositionPHCanvas} layout={AltLayout} />
 export default App;
