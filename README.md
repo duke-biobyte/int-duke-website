@@ -1,8 +1,10 @@
 # InT@Duke Website:
 
-## Prereqs
+## Getting Started
 
-Install [Node.js](https://nodejs.org/en). Then downgrade your `npm` version to 6 via e.g. `npm install -g npm@6.14.18` (or use `n` and install `node/14.21.2`).
+1. Install [Node.js](https://nodejs.org/en). Then downgrade your `npm` version to 6 via e.g. `npm install -g npm@6.14.18` (or use `n` and install `node/14.21.2`).
+2. Clone this repository.
+3. `cd` into the downloaded repo, `npm install` and `npm start`.
 
 ## npm scripts
 
